@@ -1,0 +1,8 @@
+@(recipe: Recipe)
+<recipe>
+    <title>@recipe.title</title>
+    <estimatedTime>@recipe.estimatedTime</estimatedTime>
+    <imageUrl>@recipe.imageUrl</imageUrl>
+    <howToMake>@recipe.howToMake</howToMake>
+    @_ingredients(recipe.ingredients)
+</recipe>

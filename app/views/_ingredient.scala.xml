@@ -1,0 +1,4 @@
+@(ingredient: Ingredient)
+<ingredient>
+    <name>@ingredient.name</name>
+</ingredient>
