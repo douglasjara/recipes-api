@@ -52,7 +52,7 @@ Seq[Any](format.raw/*1.25*/("""
 
               /*
                   -- GENERATED --
-                  DATE: 2020-02-11T10:47:59.308
+                  DATE: 2020-02-11T22:18:55.202
                   SOURCE: C:/Users/douglas.jara/Documents/personal/master/2. server side/2. rest play/Tareas/recipes/app/views/recipes.scala.xml
                   HASH: 839a56d1600297213dd76224461f2d4ea8be89a2
                   MATRIX: 950->1|1067->24|1095->26|1176->82|1213->104|1252->106|1289->117|1324->132|1360->139|1388->141

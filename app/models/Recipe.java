@@ -1,6 +1,7 @@
 package models;
 
 import io.ebean.Finder;
+import io.ebean.PagedList;
 import play.data.validation.Constraints;
 import java.util.ArrayList;
 import java.util.*;
@@ -51,14 +52,14 @@ public class Recipe extends baseModel {
         this.howToMake = howToMake;
     }
 
-    public static List<Recipe> getAll(int page, int maxRows) {
+    public static PagedList<Recipe> getAll(int page, int maxRows) {
         page = page == 0 ? 1 : page;
         maxRows = maxRows>10 || maxRows == 0 ? 10 : maxRows;
         return find.query()
                 .setFirstRow((page - 1) * maxRows)
                 .setMaxRows(maxRows)
                 .orderBy("title")
-                .findList();
+                .findPagedList();
     }
 
     public static Recipe findById(Long id) {

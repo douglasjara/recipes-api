@@ -1,91 +1,127 @@
-2020-02-11 21:41:03,285 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-6 - Database [default] initialized at jdbc:h2:~/recipes.db
-2020-02-11 21:41:03,287 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-6 - Creating Pool for datasource 'default'
-2020-02-11 21:41:04,193 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-6 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+2020-02-11 22:19:16,548 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-9 - Database [default] initialized at jdbc:h2:~/recipes.db
+2020-02-11 22:19:16,554 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-9 - Creating Pool for datasource 'default'
+2020-02-11 22:19:17,860 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-9 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
 
     play.filters.csrf.CSRFFilter
     play.filters.headers.SecurityHeadersFilter
     play.filters.hosts.AllowedHostsFilter
 
-2020-02-11 21:41:04,198 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-6 - Application started (Dev) (no global state)
-2020-02-11 21:41:25,971 [INFO] from application in application-akka.actor.default-dispatcher-6 - Shutting down connection pool.
-2020-02-11 21:41:26,125 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-6 - Database [default] initialized at jdbc:h2:~/recipes.db
-2020-02-11 21:41:26,126 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-6 - Creating Pool for datasource 'default'
-2020-02-11 21:41:26,367 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-6 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+2020-02-11 22:19:17,865 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-9 - Application started (Dev) (no global state)
+2020-02-11 22:19:18,249 [ERROR] from application in application-akka.actor.default-dispatcher-5 - 
+
+! @7enbf8feg - Internal server error, for (GET) [/recipes?page=2&maxRows=4] ->
+ 
+play.api.http.HttpErrorHandlerExceptions$$anon$1: Execution exception[[RuntimeException: java.lang.IllegalArgumentException: Direct self-reference leading to cycle (through reference chain: io.ebeaninternal.server.query.LimitOffsetPagedList["futureCount"]->io.ebeaninternal.server.query.QueryFutureRowCount["query"]->io.ebeaninternal.server.querydefn.DefaultOrmQuery["beanDescriptor"]->io.ebeaninternal.server.deploy.BeanDescriptor["idProperty"]->io.ebeaninternal.server.deploy.BeanProperty["property"])]]
+	at play.api.http.HttpErrorHandlerExceptions$.throwableToUsefulException(HttpErrorHandler.scala:351)
+	at play.api.http.DefaultHttpErrorHandler.onServerError(HttpErrorHandler.scala:267)
+	at play.core.server.AkkaHttpServer$$anonfun$1.applyOrElse(AkkaHttpServer.scala:448)
+	at play.core.server.AkkaHttpServer$$anonfun$1.applyOrElse(AkkaHttpServer.scala:446)
+	at scala.concurrent.impl.Promise$Transformation.run(Promise.scala:453)
+	at akka.dispatch.BatchingExecutor$AbstractBatch.processBatch(BatchingExecutor.scala:55)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.$anonfun$run$1(BatchingExecutor.scala:92)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.scala:18)
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:94)
+	at akka.dispatch.BatchingExecutor$BlockableBatch.run(BatchingExecutor.scala:92)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:41)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(ForkJoinExecutorConfigurator.scala:49)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: java.lang.RuntimeException: java.lang.IllegalArgumentException: Direct self-reference leading to cycle (through reference chain: io.ebeaninternal.server.query.LimitOffsetPagedList["futureCount"]->io.ebeaninternal.server.query.QueryFutureRowCount["query"]->io.ebeaninternal.server.querydefn.DefaultOrmQuery["beanDescriptor"]->io.ebeaninternal.server.deploy.BeanDescriptor["idProperty"]->io.ebeaninternal.server.deploy.BeanProperty["property"])
+	at play.libs.Json.toJson(Json.java:73)
+	at controllers.RecipeController.getRecipes(RecipeController.java:26)
+	at router.Routes$$anonfun$routes$1.$anonfun$applyOrElse$9(Routes.scala:239)
+	at play.core.routing.HandlerInvokerFactory$$anon$8.resultCall(HandlerInvoker.scala:151)
+	at play.core.routing.HandlerInvokerFactory$$anon$8.resultCall(HandlerInvoker.scala:150)
+	at play.core.routing.HandlerInvokerFactory$JavaActionInvokerFactory$$anon$3$$anon$4$$anon$5.invocation(HandlerInvoker.scala:116)
+	at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:131)
+	at play.mvc.Action.lambda$call$0(Action.java:89)
+	at java.util.Optional.map(Optional.java:215)
+	at play.mvc.Action.call(Action.java:81)
+	at play.http.DefaultActionCreator$1.call(DefaultActionCreator.java:33)
+	at play.core.j.JavaAction.$anonfun$apply$8(JavaAction.scala:191)
+	at scala.concurrent.Future$.$anonfun$apply$1(Future.scala:660)
+	at scala.concurrent.impl.Promise$Transformation.run(Promise.scala:430)
+	at play.core.j.HttpExecutionContext$$anon$2.run(HttpExecutionContext.scala:79)
+	at play.api.libs.streams.Execution$trampoline$.execute(Execution.scala:72)
+	at play.core.j.HttpExecutionContext.execute(HttpExecutionContext.scala:71)
+	at scala.concurrent.impl.Promise$Transformation.submitWithValue(Promise.scala:392)
+	at scala.concurrent.impl.Promise$DefaultPromise.submitWithValue(Promise.scala:302)
+	at scala.concurrent.impl.Promise$DefaultPromise.dispatchOrAddCallbacks(Promise.scala:276)
+	at scala.concurrent.impl.Promise$DefaultPromise.map(Promise.scala:146)
+	at scala.concurrent.Future$.apply(Future.scala:660)
+	at play.core.j.JavaAction.apply(JavaAction.scala:192)
+	at play.api.mvc.Action.$anonfun$apply$2(Action.scala:98)
+	at play.api.libs.streams.StrictAccumulator.$anonfun$mapFuture$4(Accumulator.scala:184)
+	at scala.util.Try$.apply(Try.scala:212)
+	at play.api.libs.streams.StrictAccumulator.$anonfun$mapFuture$3(Accumulator.scala:184)
+	at scala.Function1.$anonfun$andThen$1(Function1.scala:85)
+	at scala.Function1.$anonfun$andThen$1(Function1.scala:85)
+	at play.api.libs.streams.StrictAccumulator.run(Accumulator.scala:219)
+	at play.core.server.AkkaHttpServer.$anonfun$runAction$4(AkkaHttpServer.scala:441)
+	at akka.http.scaladsl.util.FastFuture$.strictTransform$1(FastFuture.scala:41)
+	at akka.http.scaladsl.util.FastFuture$.$anonfun$transformWith$3(FastFuture.scala:51)
+	at scala.concurrent.impl.Promise$Transformation.run(Promise.scala:447)
+	... 11 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Direct self-reference leading to cycle (through reference chain: io.ebeaninternal.server.query.LimitOffsetPagedList["futureCount"]->io.ebeaninternal.server.query.QueryFutureRowCount["query"]->io.ebeaninternal.server.querydefn.DefaultOrmQuery["beanDescriptor"]->io.ebeaninternal.server.deploy.BeanDescriptor["idProperty"]->io.ebeaninternal.server.deploy.BeanProperty["property"])
+	at com.fasterxml.jackson.databind.ObjectMapper.valueToTree(ObjectMapper.java:2802)
+	at play.libs.Json.toJson(Json.java:71)
+	... 44 common frames omitted
+Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Direct self-reference leading to cycle (through reference chain: io.ebeaninternal.server.query.LimitOffsetPagedList["futureCount"]->io.ebeaninternal.server.query.QueryFutureRowCount["query"]->io.ebeaninternal.server.querydefn.DefaultOrmQuery["beanDescriptor"]->io.ebeaninternal.server.deploy.BeanDescriptor["idProperty"]->io.ebeaninternal.server.deploy.BeanProperty["property"])
+	at com.fasterxml.jackson.databind.exc.InvalidDefinitionException.from(InvalidDefinitionException.java:77)
+	at com.fasterxml.jackson.databind.SerializerProvider.reportBadDefinition(SerializerProvider.java:1191)
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter._handleSelfReference(BeanPropertyWriter.java:944)
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:721)
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:719)
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:155)
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:727)
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:719)
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:155)
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:727)
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:719)
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:155)
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:727)
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:719)
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:155)
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:727)
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:719)
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:155)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:480)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:319)
+	at com.fasterxml.jackson.databind.ObjectMapper.writeValue(ObjectMapper.java:2655)
+	at com.fasterxml.jackson.databind.ObjectMapper.valueToTree(ObjectMapper.java:2797)
+	... 45 common frames omitted
+2020-02-11 22:46:58,047 [INFO] from application in application-akka.actor.default-dispatcher-4 - Shutting down connection pool.
+2020-02-11 22:46:58,220 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-14 - Database [default] initialized at jdbc:h2:~/recipes.db
+2020-02-11 22:46:58,220 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-14 - Creating Pool for datasource 'default'
+2020-02-11 22:46:58,497 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-14 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
 
     play.filters.csrf.CSRFFilter
     play.filters.headers.SecurityHeadersFilter
     play.filters.hosts.AllowedHostsFilter
 
-2020-02-11 21:41:26,368 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-6 - Application started (Dev) (no global state)
-2020-02-11 21:41:58,113 [INFO] from application in application-akka.actor.default-dispatcher-4 - Shutting down connection pool.
-2020-02-11 21:41:58,242 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-7 - Database [default] initialized at jdbc:h2:~/recipes.db
-2020-02-11 21:41:58,242 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-7 - Creating Pool for datasource 'default'
-2020-02-11 21:41:58,526 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-7 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+2020-02-11 22:46:58,499 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-14 - Application started (Dev) (no global state)
+2020-02-11 23:26:20,607 [INFO] from play.core.server.AkkaHttpServer in pool-19-thread-2 - Stopping server...
+2020-02-11 23:26:21,701 [WARN] from akka.actor.CoordinatedShutdown in play-dev-mode-akka.actor.default-dispatcher-16 - Task [shutdown-application-dev-mode] failed in phase [service-stop]: Compilation error[illegal start of simple expression]
+2020-02-11 23:33:04,598 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-2 - Database [default] initialized at jdbc:h2:~/recipes.db
+2020-02-11 23:33:04,600 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-2 - Creating Pool for datasource 'default'
+2020-02-11 23:33:05,657 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-2 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
 
     play.filters.csrf.CSRFFilter
     play.filters.headers.SecurityHeadersFilter
     play.filters.hosts.AllowedHostsFilter
 
-2020-02-11 21:41:58,527 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-7 - Application started (Dev) (no global state)
-2020-02-11 21:42:10,029 [INFO] from application in application-akka.actor.default-dispatcher-3 - Shutting down connection pool.
-2020-02-11 21:42:10,126 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-7 - Database [default] initialized at jdbc:h2:~/recipes.db
-2020-02-11 21:42:10,126 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-7 - Creating Pool for datasource 'default'
-2020-02-11 21:42:10,369 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-7 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
+2020-02-11 23:33:05,666 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-2 - Application started (Dev) (no global state)
+2020-02-11 23:34:53,477 [INFO] from application in application-akka.actor.default-dispatcher-5 - Shutting down connection pool.
+2020-02-11 23:34:53,644 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-4 - Database [default] initialized at jdbc:h2:~/recipes.db
+2020-02-11 23:34:53,644 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-4 - Creating Pool for datasource 'default'
+2020-02-11 23:34:53,922 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-4 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
 
     play.filters.csrf.CSRFFilter
     play.filters.headers.SecurityHeadersFilter
     play.filters.hosts.AllowedHostsFilter
 
-2020-02-11 21:42:10,370 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-7 - Application started (Dev) (no global state)
-2020-02-11 21:42:33,812 [INFO] from application in application-akka.actor.default-dispatcher-4 - Shutting down connection pool.
-2020-02-11 21:42:33,924 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-6 - Database [default] initialized at jdbc:h2:~/recipes.db
-2020-02-11 21:42:33,924 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-6 - Creating Pool for datasource 'default'
-2020-02-11 21:42:34,182 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-6 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
-
-    play.filters.csrf.CSRFFilter
-    play.filters.headers.SecurityHeadersFilter
-    play.filters.hosts.AllowedHostsFilter
-
-2020-02-11 21:42:34,184 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-6 - Application started (Dev) (no global state)
-2020-02-11 21:46:16,631 [INFO] from application in application-akka.actor.default-dispatcher-2 - Shutting down connection pool.
-2020-02-11 21:46:16,736 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-12 - Database [default] initialized at jdbc:h2:~/recipes.db
-2020-02-11 21:46:16,737 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-12 - Creating Pool for datasource 'default'
-2020-02-11 21:46:17,001 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-12 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
-
-    play.filters.csrf.CSRFFilter
-    play.filters.headers.SecurityHeadersFilter
-    play.filters.hosts.AllowedHostsFilter
-
-2020-02-11 21:46:17,002 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-12 - Application started (Dev) (no global state)
-2020-02-11 21:47:18,177 [INFO] from application in application-akka.actor.default-dispatcher-2 - Shutting down connection pool.
-2020-02-11 21:47:18,289 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-11 - Database [default] initialized at jdbc:h2:~/recipes.db
-2020-02-11 21:47:18,289 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-11 - Creating Pool for datasource 'default'
-2020-02-11 21:47:18,535 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-11 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
-
-    play.filters.csrf.CSRFFilter
-    play.filters.headers.SecurityHeadersFilter
-    play.filters.hosts.AllowedHostsFilter
-
-2020-02-11 21:47:18,537 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-11 - Application started (Dev) (no global state)
-2020-02-11 21:54:39,193 [INFO] from application in application-akka.actor.default-dispatcher-5 - Shutting down connection pool.
-2020-02-11 21:54:39,320 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-14 - Database [default] initialized at jdbc:h2:~/recipes.db
-2020-02-11 21:54:39,320 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-14 - Creating Pool for datasource 'default'
-2020-02-11 21:54:39,576 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-14 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
-
-    play.filters.csrf.CSRFFilter
-    play.filters.headers.SecurityHeadersFilter
-    play.filters.hosts.AllowedHostsFilter
-
-2020-02-11 21:54:39,578 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-14 - Application started (Dev) (no global state)
-2020-02-11 21:56:44,038 [INFO] from play.core.server.AkkaHttpServer in pool-72-thread-7 - Stopping server...
-2020-02-11 21:56:44,910 [INFO] from application in application-akka.actor.default-dispatcher-4 - Shutting down connection pool.
-2020-02-11 21:56:45,014 [INFO] from play.api.db.DefaultDBApi in play-dev-mode-akka.actor.default-dispatcher-15 - Database [default] initialized at jdbc:h2:~/recipes.db
-2020-02-11 21:56:45,014 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-15 - Creating Pool for datasource 'default'
-2020-02-11 21:56:45,282 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-15 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
-
-    play.filters.csrf.CSRFFilter
-    play.filters.headers.SecurityHeadersFilter
-    play.filters.hosts.AllowedHostsFilter
-
-2020-02-11 21:56:45,283 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-15 - Application started (Dev) (no global state)
-2020-02-11 21:56:45,284 [INFO] from application in application-akka.actor.default-dispatcher-5 - Shutting down connection pool.
+2020-02-11 23:34:53,924 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-4 - Application started (Dev) (no global state)
+2020-02-11 23:40:04,845 [INFO] from play.core.server.AkkaHttpServer in pool-44-thread-10 - Stopping server...
+2020-02-11 23:40:04,849 [INFO] from application in application-akka.actor.default-dispatcher-5 - Shutting down connection pool.

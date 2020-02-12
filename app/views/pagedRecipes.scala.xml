@@ -1,0 +1,10 @@
+@(recipes: PagedRecipes)
+<?xml version="1.0" encoding="UTF-8"?>
+<page>@recipes.getPage()</page>
+<rows>@recipes.getRows()</rows>
+<total>@recipes.getTotal()</total>
+<recipes>
+        @for(recipe <- recipes.getRecipes()) {
+                @_recipe(recipe)
+        }
+</recipes>
