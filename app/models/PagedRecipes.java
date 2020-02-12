@@ -2,9 +2,17 @@ package models;
 import java.util.List;
 
 public class PagedRecipes {
-    public int page;
-    public int rows;
-    public int total;
+    private int page;
+    private int rows;
+    private int total;
+    private List<Recipe> recipes;
+
+    public PagedRecipes(int page, int rows, int total, List<Recipe> recipes) {
+        this.page = page;
+        this.rows = rows;
+        this.total = total;
+        this.recipes = recipes;
+    }
 
     public int getPage() {
         return page;
@@ -37,6 +45,4 @@ public class PagedRecipes {
     public void setRecipes(List<Recipe> recipes) {
         this.recipes = recipes;
     }
-
-    public List<Recipe> recipes;
 }

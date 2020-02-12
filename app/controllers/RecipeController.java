@@ -24,11 +24,7 @@ public class RecipeController extends Controller {
 
     public Result getRecipes(Http.Request request, int page, int maxRows) {
         PagedList<Recipe> recipes = this.recipeFinder.getAll(page, maxRows);
-        PagedRecipes pagedRecipes = new PagedRecipes();
-        pagedRecipes.setPage(page);
-        pagedRecipes.setRows(recipes.getPageSize());
-        pagedRecipes.setTotal(recipes.getTotalCount());
-        pagedRecipes.setRecipes(recipes.getList());
+        PagedRecipes pagedRecipes = new PagedRecipes(page, recipes.getPageSize(), recipes.getTotalCount(), recipes.getList());
 
         if (request.accepts("application/json"))
             return Results.ok(Json.toJson(pagedRecipes)).as("application/json");
