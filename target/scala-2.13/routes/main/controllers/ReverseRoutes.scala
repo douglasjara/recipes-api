@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:C:/Users/douglas.jara/Documents/personal/master/2. server side/2. rest play/Tareas/recipes/conf/routes
-// @DATE:Tue Feb 11 10:47:58 COT 2020
+// @DATE:Tue Feb 11 20:49:26 COT 2020
 
 import play.api.mvc.Call
 
@@ -18,6 +18,18 @@ package controllers {
     }
 
   
+    // @LINE:11
+    def getRecipes(page:Int, maxRows:Int): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "recipes" + play.core.routing.queryString(List(Some(implicitly[play.api.mvc.QueryStringBindable[Int]].unbind("page", page)), Some(implicitly[play.api.mvc.QueryStringBindable[Int]].unbind("maxRows", maxRows)))))
+    }
+  
+    // @LINE:12
+    def createRecipe(): Call = {
+      
+      Call("POST", _prefix + { _defaultPrefix } + "recipe")
+    }
+  
     // @LINE:13
     def updateRecipe(recipeId:Long): Call = {
       
@@ -28,18 +40,6 @@ package controllers {
     def deleteRecipe(recipeId:Long): Call = {
       
       Call("DELETE", _prefix + { _defaultPrefix } + "recipe/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Long]].unbind("recipeId", recipeId)))
-    }
-  
-    // @LINE:12
-    def createRecipe(): Call = {
-      
-      Call("POST", _prefix + { _defaultPrefix } + "recipe")
-    }
-  
-    // @LINE:11
-    def getRecipes(): Call = {
-      
-      Call("GET", _prefix + { _defaultPrefix } + "recipes")
     }
   
   }

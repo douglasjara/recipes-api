@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:C:/Users/douglas.jara/Documents/personal/master/2. server side/2. rest play/Tareas/recipes/conf/routes
-// @DATE:Tue Feb 11 10:47:58 COT 2020
+// @DATE:Tue Feb 11 20:49:26 COT 2020
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -19,6 +19,26 @@ package controllers.javascript {
     }
 
   
+    // @LINE:11
+    def getRecipes: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.RecipeController.getRecipes",
+      """
+        function(page0,maxRows1) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "recipes" + _qS([(""" + implicitly[play.api.mvc.QueryStringBindable[Int]].javascriptUnbind + """)("page", page0), (""" + implicitly[play.api.mvc.QueryStringBindable[Int]].javascriptUnbind + """)("maxRows", maxRows1)])})
+        }
+      """
+    )
+  
+    // @LINE:12
+    def createRecipe: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.RecipeController.createRecipe",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "recipe"})
+        }
+      """
+    )
+  
     // @LINE:13
     def updateRecipe: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.RecipeController.updateRecipe",
@@ -35,26 +55,6 @@ package controllers.javascript {
       """
         function(recipeId0) {
           return _wA({method:"DELETE", url:"""" + _prefix + { _defaultPrefix } + """" + "recipe/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Long]].javascriptUnbind + """)("recipeId", recipeId0))})
-        }
-      """
-    )
-  
-    // @LINE:12
-    def createRecipe: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.RecipeController.createRecipe",
-      """
-        function() {
-          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "recipe"})
-        }
-      """
-    )
-  
-    // @LINE:11
-    def getRecipes: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.RecipeController.getRecipes",
-      """
-        function() {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "recipes"})
         }
       """
     )

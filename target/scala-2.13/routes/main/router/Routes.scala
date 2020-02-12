@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:C:/Users/douglas.jara/Documents/personal/master/2. server side/2. rest play/Tareas/recipes/conf/routes
-// @DATE:Tue Feb 11 10:47:58 COT 2020
+// @DATE:Tue Feb 11 20:49:26 COT 2020
 
 package router
 
@@ -47,10 +47,10 @@ class Routes(
     ("""GET""", this.prefix, """controllers.HomeController.index"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """explore""", """controllers.HomeController.explore"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """tutorial""", """controllers.HomeController.tutorial"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """recipes""", """controllers.RecipeController.getRecipes()"""),
-    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """recipe""", """controllers.RecipeController.createRecipe()"""),
-    ("""PATCH""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """recipe/""" + "$" + """recipeId<[^/]+>""", """controllers.RecipeController.updateRecipe(recipeId:Long)"""),
-    ("""DELETE""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """recipe/""" + "$" + """recipeId<[^/]+>""", """controllers.RecipeController.deleteRecipe(recipeId:Long)"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """recipes""", """controllers.RecipeController.getRecipes(request:Request, page:Int, maxRows:Int)"""),
+    ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """recipe""", """controllers.RecipeController.createRecipe(request:Request)"""),
+    ("""PATCH""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """recipe/""" + "$" + """recipeId<[^/]+>""", """controllers.RecipeController.updateRecipe(request:Request, recipeId:Long)"""),
+    ("""DELETE""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """recipe/""" + "$" + """recipeId<[^/]+>""", """controllers.RecipeController.deleteRecipe(request:Request, recipeId:Long)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
@@ -118,12 +118,14 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("recipes")))
   )
   private[this] lazy val controllers_RecipeController_getRecipes3_invoker = createInvoker(
-    RecipeController_0.getRecipes(),
+    
+    (req:play.mvc.Http.Request) =>
+      RecipeController_0.getRecipes(fakeValue[play.mvc.Http.Request], fakeValue[Int], fakeValue[Int]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.RecipeController",
       "getRecipes",
-      Nil,
+      Seq(classOf[play.mvc.Http.Request], classOf[Int], classOf[Int]),
       "GET",
       this.prefix + """recipes""",
       """Recipes""",
@@ -136,12 +138,14 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("recipe")))
   )
   private[this] lazy val controllers_RecipeController_createRecipe4_invoker = createInvoker(
-    RecipeController_0.createRecipe(),
+    
+    (req:play.mvc.Http.Request) =>
+      RecipeController_0.createRecipe(fakeValue[play.mvc.Http.Request]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.RecipeController",
       "createRecipe",
-      Nil,
+      Seq(classOf[play.mvc.Http.Request]),
       "POST",
       this.prefix + """recipe""",
       """""",
@@ -154,12 +158,14 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("recipe/"), DynamicPart("recipeId", """[^/]+""",true)))
   )
   private[this] lazy val controllers_RecipeController_updateRecipe5_invoker = createInvoker(
-    RecipeController_0.updateRecipe(fakeValue[Long]),
+    
+    (req:play.mvc.Http.Request) =>
+      RecipeController_0.updateRecipe(fakeValue[play.mvc.Http.Request], fakeValue[Long]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.RecipeController",
       "updateRecipe",
-      Seq(classOf[Long]),
+      Seq(classOf[play.mvc.Http.Request], classOf[Long]),
       "PATCH",
       this.prefix + """recipe/""" + "$" + """recipeId<[^/]+>""",
       """""",
@@ -172,12 +178,14 @@ class Routes(
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("recipe/"), DynamicPart("recipeId", """[^/]+""",true)))
   )
   private[this] lazy val controllers_RecipeController_deleteRecipe6_invoker = createInvoker(
-    RecipeController_0.deleteRecipe(fakeValue[Long]),
+    
+    (req:play.mvc.Http.Request) =>
+      RecipeController_0.deleteRecipe(fakeValue[play.mvc.Http.Request], fakeValue[Long]),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.RecipeController",
       "deleteRecipe",
-      Seq(classOf[Long]),
+      Seq(classOf[play.mvc.Http.Request], classOf[Long]),
       "DELETE",
       this.prefix + """recipe/""" + "$" + """recipeId<[^/]+>""",
       """""",
@@ -226,26 +234,30 @@ class Routes(
   
     // @LINE:11
     case controllers_RecipeController_getRecipes3_route(params@_) =>
-      call { 
-        controllers_RecipeController_getRecipes3_invoker.call(RecipeController_0.getRecipes())
+      call(params.fromQuery[Int]("page", None), params.fromQuery[Int]("maxRows", None)) { (page, maxRows) =>
+        controllers_RecipeController_getRecipes3_invoker.call(
+          req => RecipeController_0.getRecipes(req, page, maxRows))
       }
   
     // @LINE:12
     case controllers_RecipeController_createRecipe4_route(params@_) =>
       call { 
-        controllers_RecipeController_createRecipe4_invoker.call(RecipeController_0.createRecipe())
+        controllers_RecipeController_createRecipe4_invoker.call(
+          req => RecipeController_0.createRecipe(req))
       }
   
     // @LINE:13
     case controllers_RecipeController_updateRecipe5_route(params@_) =>
       call(params.fromPath[Long]("recipeId", None)) { (recipeId) =>
-        controllers_RecipeController_updateRecipe5_invoker.call(RecipeController_0.updateRecipe(recipeId))
+        controllers_RecipeController_updateRecipe5_invoker.call(
+          req => RecipeController_0.updateRecipe(req, recipeId))
       }
   
     // @LINE:14
     case controllers_RecipeController_deleteRecipe6_route(params@_) =>
       call(params.fromPath[Long]("recipeId", None)) { (recipeId) =>
-        controllers_RecipeController_deleteRecipe6_invoker.call(RecipeController_0.deleteRecipe(recipeId))
+        controllers_RecipeController_deleteRecipe6_invoker.call(
+          req => RecipeController_0.deleteRecipe(req, recipeId))
       }
   
     // @LINE:17

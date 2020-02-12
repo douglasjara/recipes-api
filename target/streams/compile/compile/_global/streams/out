@@ -1,19 +1,7 @@
-[0m[[0m[31merror[0m] [0m[0mC:\Users\douglas.jara\Documents\personal\master\2. server side\2. rest play\Tareas\recipes\conf\routes:11:1: not enough arguments for method getRecipes: (page: Int, maxRows: Int)play.mvc.Result.[0m
-[0m[[0m[31merror[0m] [0m[0mUnspecified value parameters page, maxRows.[0m
-[0m[[0m[31merror[0m] [0m[0mGET     /recipes                      controllers.RecipeController.getRecipes()[0m
 [0m[[0m[31merror[0m] [0m[0mC:\Users\douglas.jara\Documents\personal\master\2. server side\2. rest play\Tareas\recipes\app\views\_recipe.scala.xml:3:20: variable title in class Recipe cannot be accessed in models.Recipe[0m
 [0m[[0m[31merror[0m] [0m[0m    <title>@recipe.title</title>[0m
 [0m[[0m[31merror[0m] [0m[0m                   ^[0m
-[0m[[0m[31merror[0m] [0m[0mC:\Users\douglas.jara\Documents\personal\master\2. server side\2. rest play\Tareas\recipes\app\views\_recipe.scala.xml:4:28: variable estimatedTime in class Recipe cannot be accessed in models.Recipe[0m
-[0m[[0m[31merror[0m] [0m[0m    <estimatedTime>@recipe.estimatedTime</estimatedTime>[0m
-[0m[[0m[31merror[0m] [0m[0m                           ^[0m
-[0m[[0m[31merror[0m] [0m[0mC:\Users\douglas.jara\Documents\personal\master\2. server side\2. rest play\Tareas\recipes\app\views\_recipe.scala.xml:5:23: variable imageUrl in class Recipe cannot be accessed in models.Recipe[0m
-[0m[[0m[31merror[0m] [0m[0m    <imageUrl>@recipe.imageUrl</imageUrl>[0m
-[0m[[0m[31merror[0m] [0m[0m                      ^[0m
-[0m[[0m[31merror[0m] [0m[0mC:\Users\douglas.jara\Documents\personal\master\2. server side\2. rest play\Tareas\recipes\app\views\_recipe.scala.xml:6:24: variable howToMake in class Recipe cannot be accessed in models.Recipe[0m
-[0m[[0m[31merror[0m] [0m[0m    <howToMake>@recipe.howToMake</howToMake>[0m
-[0m[[0m[31merror[0m] [0m[0m                       ^[0m
-[0m[[0m[31merror[0m] [0m[0mC:\Users\douglas.jara\Documents\personal\master\2. server side\2. rest play\Tareas\recipes\app\views\_recipe.scala.xml:7:26: variable ingredients in class Recipe cannot be accessed in models.Recipe[0m
-[0m[[0m[31merror[0m] [0m[0m    @_ingredients(recipe.ingredients)[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\douglas.jara\Documents\personal\master\2. server side\2. rest play\Tareas\recipes\app\views\_recipe.scala.xml:7:26: value getIngredients is not a member of models.Recipe[0m
+[0m[[0m[31merror[0m] [0m[0m    @_ingredients(recipe.getIngredients())[0m
 [0m[[0m[31merror[0m] [0m[0m                         ^[0m
-[0m[[0m[31merror[0m] [0m[0m6 errors found[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m

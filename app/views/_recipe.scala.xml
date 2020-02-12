@@ -1,8 +1,8 @@
 @(recipe: Recipe)
 <recipe>
-    <title>@recipe.title</title>
-    <estimatedTime>@recipe.estimatedTime</estimatedTime>
-    <imageUrl>@recipe.imageUrl</imageUrl>
-    <howToMake>@recipe.howToMake</howToMake>
+    <title>@recipe.getTitle()</title>
+    <estimatedTime>@recipe.getEstimatedTime()</estimatedTime>
+    <imageUrl>@recipe.getImageUrl()</imageUrl>
+    <howToMake>@recipe.getHowToMake()</howToMake>
     @_ingredients(recipe.ingredients)
 </recipe>
