@@ -14,7 +14,7 @@ public class Recipe extends baseModel {
     private String title;
     private String estimatedTime;
     private String imageUrl;
-    public List<Ingredient> ingredients = new ArrayList<Ingredient>();
+    //public List<Ingredient> ingredients = new ArrayList<Ingredient>() {};
     private String howToMake;
 
     private static final Finder<Long, Recipe> find = new Finder<>(Recipe.class);
@@ -55,8 +55,9 @@ public class Recipe extends baseModel {
         page = page == 0 ? 1 : page;
         maxRows = maxRows>10 || maxRows == 0 ? 10 : maxRows;
         return find.query()
+                .setFirstRow((page - 1) * maxRows)
                 .setMaxRows(maxRows)
-                .setFirstRow((page * 10) + 1)
+                .orderBy("title")
                 .findList();
     }
 

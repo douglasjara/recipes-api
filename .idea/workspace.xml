@@ -3,16 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="52ad355e-c224-4420-a89b-10ed72234b3a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/RecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/RecipeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Recipe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/_recipe.scala.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/_recipe.scala.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/routes" beforeDir="false" afterPath="$PROJECT_DIR$/conf/routes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/application.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/application.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/.history" beforeDir="false" afterPath="$PROJECT_DIR$/target/.history" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/routes/main/controllers/ReverseRoutes.scala" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/routes/main/controllers/ReverseRoutes.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/routes/main/controllers/javascript/JavaScriptReverseRoutes.scala" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/routes/main/controllers/javascript/JavaScriptReverseRoutes.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/routes/main/controllers/routes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/routes/main/controllers/routes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/routes/main/router/Routes.scala" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/routes/main/router/Routes.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/scala-2.13/routes/main/router/RoutesPrefix.scala" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/routes/main/router/RoutesPrefix.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/scala-2.13/twirl/main/views/xml/_recipe.template.scala" beforeDir="false" afterPath="$PROJECT_DIR$/target/scala-2.13/twirl/main/views/xml/_recipe.template.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,6 +40,10 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/views" />
     <property name="project.structure.last.edited" value="Project" />
@@ -130,5 +128,13 @@
       <screen x="-1600" y="159" width="1600" height="860" />
     </state>
     <state x="-1104" y="414" key="com.intellij.ide.util.TipDialog/0.0.1366.728/-1600.159.1600.860@-1600.159.1600.860" timestamp="1581469074852" />
+    <state x="-1096" y="483" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1581474597552">
+      <screen x="-1600" y="159" width="1600" height="860" />
+    </state>
+    <state x="-1096" y="483" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1366.728/-1600.159.1600.860@-1600.159.1600.860" timestamp="1581474597552" />
+    <state x="-1225" y="326" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1581474632327">
+      <screen x="-1600" y="159" width="1600" height="860" />
+    </state>
+    <state x="-1225" y="326" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1366.728/-1600.159.1600.860@-1600.159.1600.860" timestamp="1581474632327" />
   </component>
 </project>

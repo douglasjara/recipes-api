@@ -4,5 +4,4 @@
     <estimatedTime>@recipe.getEstimatedTime()</estimatedTime>
     <imageUrl>@recipe.getImageUrl()</imageUrl>
     <howToMake>@recipe.getHowToMake()</howToMake>
-    @_ingredients(recipe.ingredients)
 </recipe>
