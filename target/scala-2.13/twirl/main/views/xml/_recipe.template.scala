@@ -36,7 +36,8 @@ Seq[Any](format.raw/*1.18*/("""
     <estimatedTime>"""),_display_(/*4.21*/recipe/*4.27*/.getEstimatedTime()),format.raw/*4.46*/("""</estimatedTime>
     <imageUrl>"""),_display_(/*5.16*/recipe/*5.22*/.getImageUrl()),format.raw/*5.36*/("""</imageUrl>
     <howToMake>"""),_display_(/*6.17*/recipe/*6.23*/.getHowToMake()),format.raw/*6.38*/("""</howToMake>
-</recipe>"""))
+    """),_display_(/*7.6*/_additionalInformation(recipe.additionalInformation)),format.raw/*7.58*/("""
+"""),format.raw/*8.1*/("""</recipe>"""))
       }
     }
   }
@@ -52,11 +53,11 @@ Seq[Any](format.raw/*1.18*/("""
 
               /*
                   -- GENERATED --
-                  DATE: 2020-02-11T21:40:01.236
+                  DATE: 2020-02-14T07:53:10.429
                   SOURCE: C:/Users/douglas.jara/Documents/personal/master/2. server side/2. rest play/Tareas/recipes/app/views/_recipe.scala.xml
-                  HASH: 4ce746810d2c3f7812643d31d81689bf94faefe2
-                  MATRIX: 944->1|1054->17|1082->19|1130->41|1144->47|1175->58|1231->88|1245->94|1284->113|1343->146|1357->152|1391->166|1446->195|1460->201|1495->216
-                  LINES: 28->1|33->1|34->2|35->3|35->3|35->3|36->4|36->4|36->4|37->5|37->5|37->5|38->6|38->6|38->6
+                  HASH: 92bca6ffa1f157ac3e5efb50f76c69adb0251123
+                  MATRIX: 944->1|1054->17|1082->19|1130->41|1144->47|1175->58|1231->88|1245->94|1284->113|1343->146|1357->152|1391->166|1446->195|1460->201|1495->216|1539->235|1611->287|1639->289
+                  LINES: 28->1|33->1|34->2|35->3|35->3|35->3|36->4|36->4|36->4|37->5|37->5|37->5|38->6|38->6|38->6|39->7|39->7|40->8
                   -- GENERATED --
               */
           

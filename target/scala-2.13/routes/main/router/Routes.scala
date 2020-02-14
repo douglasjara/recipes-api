@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:C:/Users/douglas.jara/Documents/personal/master/2. server side/2. rest play/Tareas/recipes/conf/routes
-// @DATE:Tue Feb 11 20:49:26 COT 2020
+// @DATE:Thu Feb 13 19:58:46 COT 2020
 
 package router
 
@@ -49,7 +49,7 @@ class Routes(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """tutorial""", """controllers.HomeController.tutorial"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """recipes""", """controllers.RecipeController.getRecipes(request:Request, page:Int, maxRows:Int)"""),
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """recipe""", """controllers.RecipeController.createRecipe(request:Request)"""),
-    ("""PATCH""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """recipe/""" + "$" + """recipeId<[^/]+>""", """controllers.RecipeController.updateRecipe(request:Request, recipeId:Long)"""),
+    ("""PUT""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """recipe/""" + "$" + """recipeId<[^/]+>""", """controllers.RecipeController.updateRecipe(request:Request, recipeId:Long)"""),
     ("""DELETE""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """recipe/""" + "$" + """recipeId<[^/]+>""", """controllers.RecipeController.deleteRecipe(request:Request, recipeId:Long)"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """assets/""" + "$" + """file<.+>""", """controllers.Assets.versioned(path:String = "/public", file:Asset)"""),
     Nil
@@ -154,7 +154,7 @@ class Routes(
   )
 
   // @LINE:13
-  private[this] lazy val controllers_RecipeController_updateRecipe5_route = Route("PATCH",
+  private[this] lazy val controllers_RecipeController_updateRecipe5_route = Route("PUT",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("recipe/"), DynamicPart("recipeId", """[^/]+""",true)))
   )
   private[this] lazy val controllers_RecipeController_updateRecipe5_invoker = createInvoker(
@@ -166,7 +166,7 @@ class Routes(
       "controllers.RecipeController",
       "updateRecipe",
       Seq(classOf[play.mvc.Http.Request], classOf[Long]),
-      "PATCH",
+      "PUT",
       this.prefix + """recipe/""" + "$" + """recipeId<[^/]+>""",
       """""",
       Seq()

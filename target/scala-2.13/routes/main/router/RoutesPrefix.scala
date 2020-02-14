@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:C:/Users/douglas.jara/Documents/personal/master/2. server side/2. rest play/Tareas/recipes/conf/routes
-// @DATE:Tue Feb 11 20:49:26 COT 2020
+// @DATE:Thu Feb 13 19:58:46 COT 2020
 
 
 package router {

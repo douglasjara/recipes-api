@@ -3,10 +3,7 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.ebean.PagedList;
-import models.ErrorResponse;
-import models.Ingredient;
-import models.PagedRecipes;
-import models.Recipe;
+import models.*;
 import play.data.Form;
 import play.data.FormFactory;
 import play.libs.Json;
@@ -34,6 +31,7 @@ public class RecipeController extends Controller {
         return Results.status(415);
     }
 
+    @play.db.ebean.Transactional
     public Result createRecipe(Http.Request request) {
         Form<Recipe> form = formFactory.form(Recipe.class).bindFromRequest(request);
         if (form.hasErrors()) return Results.badRequest(form.errorsAsJson());
@@ -42,7 +40,7 @@ public class RecipeController extends Controller {
         if (this.recipeFinder.findByTitle(recipeReceived.getTitle()).size() > 0)
             return Results.status(CONFLICT, "Ese título ya existe");
 
-        recipeReceived.save();
+        recipeReceived.createRecipe();
 
         if (request.accepts("application/json"))
             return Results.ok(play.libs.Json.toJson(recipeReceived));
@@ -52,6 +50,7 @@ public class RecipeController extends Controller {
         return Results.status(415);
     }
 
+    @play.db.ebean.Transactional
     public Result updateRecipe(Http.Request request, Long id) {
         Form<Recipe> form = formFactory.form(Recipe.class).bindFromRequest(request);
         if (form.hasErrors()) return Results.badRequest(form.errorsAsJson());
@@ -64,11 +63,14 @@ public class RecipeController extends Controller {
             return Results.badRequest(play.libs.Json.toJson(error));
         }
 
-        recipeToUpdate.setTitle(recipeReceived.getTitle());
-        recipeToUpdate.setEstimatedTime(recipeReceived.getEstimatedTime());
-        recipeToUpdate.setImageUrl(recipeReceived.getImageUrl());
-        recipeToUpdate.setHowToMake(recipeReceived.getHowToMake());
-        recipeToUpdate.update();
+        if(recipeReceived.additionalInformation != null) {
+            AdditionalInformation additionalInformation = AdditionalInformation.findById(recipeToUpdate.additionalInformation.getId());
+            additionalInformation.merge(recipeReceived.additionalInformation);
+            additionalInformation.updateAdditionalInformation();
+        }
+
+        recipeToUpdate.merge(recipeReceived);
+        recipeToUpdate.updateRecipe();
 
         if (request.accepts("application/json"))
             return Results.ok(play.libs.Json.toJson(recipeToUpdate));
@@ -78,6 +80,7 @@ public class RecipeController extends Controller {
         return Results.status(415);
     }
 
+    @play.db.ebean.Transactional
     public Result deleteRecipe(Http.Request request, Long id) {
         Recipe recipeToDelete = Recipe.findById(id);
 

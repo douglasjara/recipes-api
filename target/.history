@@ -38,3 +38,13 @@ run
 exit
 compile
 exit
+compile
+h2-browser
+run
+compile
+run
+compile
+run
+h2-browser
+run
+exit

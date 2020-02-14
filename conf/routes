@@ -10,7 +10,7 @@ GET    /tutorial                    controllers.HomeController.tutorial
 #Recipes
 GET     /recipes                      controllers.RecipeController.getRecipes(request: Request, page: Int, maxRows: Int)
 POST    /recipe                       controllers.RecipeController.createRecipe(request: Request)
-PATCH   /recipe/:recipeId              controllers.RecipeController.updateRecipe(request: Request, recipeId: Long)
+PUT     /recipe/:recipeId              controllers.RecipeController.updateRecipe(request: Request, recipeId: Long)
 DELETE  /recipe/:recipeId              controllers.RecipeController.deleteRecipe(request: Request, recipeId: Long)
 
 # Map static resources from the /public folder to the /assets URL path

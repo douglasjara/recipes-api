@@ -1,0 +1,7 @@
+@(additionalInformation: AdditionalInformation)
+<additionalInformation>
+    <dificulty>@additionalInformation.getDificulty()</dificulty>
+    <guests>@additionalInformation.getGuests()</guests>
+    <price>@additionalInformation.getPrice()</price>
+    <kal>@additionalInformation.getKal()</kal>
+</additionalInformation>

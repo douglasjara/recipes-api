@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:C:/Users/douglas.jara/Documents/personal/master/2. server side/2. rest play/Tareas/recipes/conf/routes
-// @DATE:Tue Feb 11 20:49:26 COT 2020
+// @DATE:Thu Feb 13 19:58:46 COT 2020
 
 import play.api.mvc.Call
 
@@ -33,7 +33,7 @@ package controllers {
     // @LINE:13
     def updateRecipe(recipeId:Long): Call = {
       
-      Call("PATCH", _prefix + { _defaultPrefix } + "recipe/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Long]].unbind("recipeId", recipeId)))
+      Call("PUT", _prefix + { _defaultPrefix } + "recipe/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Long]].unbind("recipeId", recipeId)))
     }
   
     // @LINE:14
