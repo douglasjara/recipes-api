@@ -2,18 +2,12 @@ package models;
 
 import io.ebean.Finder;
 import io.ebean.PagedList;
-import io.ebean.SqlUpdate;
 import play.data.validation.Constraints;
-import java.util.ArrayList;
 import java.util.*;
 import javax.persistence.*;
 
-import static io.ebean.Ebean.*;
-
 @Entity
 public class Recipe extends baseModel {
-    //crear constructor
-
     @Constraints.Required
     private String title;
     private String estimatedTime;
@@ -23,6 +17,9 @@ public class Recipe extends baseModel {
 
     @OneToOne(cascade = CascadeType.ALL)
     public AdditionalInformation additionalInformation;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Suggestion> suggestions;
 
     private static final Finder<Long, Recipe> find = new Finder<>(Recipe.class);
 
@@ -96,5 +93,9 @@ public class Recipe extends baseModel {
         this.estimatedTime = recipe.estimatedTime == null ? this.estimatedTime : recipe.estimatedTime;
         this.imageUrl = recipe.imageUrl == null ? this.imageUrl : recipe.imageUrl;
         this.howToMake = recipe.howToMake == null ? this.howToMake : recipe.howToMake;
+    }
+
+    public void addSuggestion(Suggestion suggestion) {
+        this.suggestions.add(suggestion);
     }
 }

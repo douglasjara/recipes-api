@@ -15,6 +15,7 @@ public class AdditionalInformation extends baseModel {
     //public Recipe recipe;
 
     private static final Finder<Long, AdditionalInformation> find = new Finder<>(AdditionalInformation.class);
+    private static final Finder<Long, Recipe> recipeFind = new Finder<>(Recipe.class);
 
     public String getDificulty() { return dificulty; }
     public void setDificulty(String dificulty) { this.dificulty = dificulty; }
@@ -39,6 +40,11 @@ public class AdditionalInformation extends baseModel {
         return find.byId(id);
     }
 
+    public static AdditionalInformation findByRecipeId(Long recipeId) {
+        Recipe recipe = recipeFind.byId(recipeId);
+        return find.byId(recipe.additionalInformation.getId());
+    }
+
     public void merge(AdditionalInformation additionalInformation) {
         this.dificulty = additionalInformation.dificulty == null ? this.dificulty : additionalInformation.dificulty;
         this.guests = additionalInformation.guests == null ? this.guests : additionalInformation.guests;
@@ -46,7 +52,7 @@ public class AdditionalInformation extends baseModel {
         this.kal = additionalInformation.kal == null ? this.kal : additionalInformation.kal;
     }
 
-    public Boolean deleteAdditionalInformation(Long id) {
+    public static Boolean deleteAdditionalInformation(Long id) {
         AdditionalInformation additionalInformation = find.byId(id);
         return additionalInformation.delete();
     }

@@ -29,14 +29,33 @@ create table recipe (
   constraint pk_recipe primary key (id)
 );
 
+create table suggestion (
+  id                            bigint auto_increment not null,
+  recipe_id                     bigint not null,
+  title                         varchar(255),
+  description                   varchar(255),
+  version                       bigint not null,
+  when_created                  timestamp not null,
+  when_updated                  timestamp not null,
+  constraint pk_suggestion primary key (id)
+);
+
 alter table recipe add constraint fk_recipe_additional_information_id foreign key (additional_information_id) references additional_information (id) on delete restrict on update restrict;
+
+create index ix_suggestion_recipe_id on suggestion (recipe_id);
+alter table suggestion add constraint fk_suggestion_recipe_id foreign key (recipe_id) references recipe (id) on delete restrict on update restrict;
 
 
 # --- !Downs
 
 alter table recipe drop constraint if exists fk_recipe_additional_information_id;
 
+alter table suggestion drop constraint if exists fk_suggestion_recipe_id;
+drop index if exists ix_suggestion_recipe_id;
+
 drop table if exists additional_information;
 
 drop table if exists recipe;
+
+drop table if exists suggestion;
 

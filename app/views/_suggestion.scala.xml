@@ -1,0 +1,6 @@
+@(suggestion: Suggestion)
+<suggestion>
+    <id>@suggestion.getId()</id>
+    <title>@suggestion.getTitle()</title>
+    <description>@suggestion.getDescription()</description>
+</suggestion>

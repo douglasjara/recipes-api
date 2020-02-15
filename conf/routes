@@ -7,11 +7,26 @@ GET     /                           controllers.HomeController.index
 GET    /explore                     controllers.HomeController.explore
 GET    /tutorial                    controllers.HomeController.tutorial
 
-#Recipes
+#Recipe
 GET     /recipes                      controllers.RecipeController.getRecipes(request: Request, page: Int, maxRows: Int)
+GET     /recipe/:recipeId             controllers.RecipeController.getRecipe(request: Request, recipeId: Long)
 POST    /recipe                       controllers.RecipeController.createRecipe(request: Request)
-PUT     /recipe/:recipeId              controllers.RecipeController.updateRecipe(request: Request, recipeId: Long)
-DELETE  /recipe/:recipeId              controllers.RecipeController.deleteRecipe(request: Request, recipeId: Long)
+PUT     /recipe/:recipeId             controllers.RecipeController.updateRecipe(request: Request, recipeId: Long)
+DELETE  /recipe/:recipeId             controllers.RecipeController.deleteRecipe(request: Request, recipeId: Long)
+
+#Recipe Additional Information (1 to 1 relation)
+GET     /recipe/:recipeId/additionalInformation                     controllers.AdditionalInformationController.getAdditionalInformationByRecipeId(request: Request, recipeId: Long)
+GET     /recipe/additionalInformation/:additionalInformationId      controllers.AdditionalInformationController.getAdditionalInformation(request: Request, additionalInformationId: Long)
+POST    /recipe/:recipeId/additionalInformation                     controllers.AdditionalInformationController.createAdditionalInformation(request: Request, recipeId: Long)
+PUT     /recipe/additionalInformation/:additionalInformationId      controllers.AdditionalInformationController.updateAdditionalInformation(request: Request, additionalInformationId: Long)
+#DELETE Para eliminar, se debe elimiar la receta.
+
+#Recipe Suggestions (1 to N relation)
+GET     /recipe/:recipeId/suggestions           controllers.SuggestionController.getSuggestionsByRecipeId(request: Request, recipeId: Long)
+GET     /recipe/suggestion/:suggestionId        controllers.SuggestionController.getSuggestion(request: Request, suggestionId: Long)
+POST    /recipe/:recipeId/suggestion            controllers.SuggestionController.createSuggestion(request: Request, recipeId: Long)
+PUT     /recipe/suggestion/:suggestionId        controllers.SuggestionController.updateSuggestion(request: Request, suggestionId: Long)
+DELETE  /recipe/suggestion/:suggestionId        controllers.SuggestionController.deleteSuggestion(request: Request, suggestionId: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

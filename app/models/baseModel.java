@@ -1,7 +1,10 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.ebean.Model;
-import io.ebean.annotation.*;
+import io.ebean.annotation.CreatedTimestamp;
+import io.ebean.annotation.UpdatedTimestamp;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -9,11 +12,11 @@ import java.sql.Timestamp;
 public class baseModel extends Model {
     @Id
     private Long id;
-    @Version
+    @Version @JsonIgnore
     private Long version;
-    @CreatedTimestamp
+    @CreatedTimestamp @JsonIgnore
     private Timestamp whenCreated;
-    @UpdatedTimestamp
+    @UpdatedTimestamp @JsonIgnore
     private Timestamp whenUpdated;
 
     public Long getId() {

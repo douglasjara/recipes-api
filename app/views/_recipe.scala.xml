@@ -1,8 +1,14 @@
 @(recipe: Recipe)
 <recipe>
+    <id>@recipe.getId()</id>
     <title>@recipe.getTitle()</title>
     <estimatedTime>@recipe.getEstimatedTime()</estimatedTime>
     <imageUrl>@recipe.getImageUrl()</imageUrl>
     <howToMake>@recipe.getHowToMake()</howToMake>
     @_additionalInformation(recipe.additionalInformation)
+    <suggestions>
+        @for(suggestion <- recipe.suggestions) {
+            @_suggestion(suggestion)
+        }
+    </suggestions>
 </recipe>

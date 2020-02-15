@@ -1,0 +1,7 @@
+@(suggestions: List[Suggestion])
+<?xml version="1.0" encoding="UTF-8"?>
+<suggestions>
+    @for(suggestion <- suggestions) {
+        @_suggestion(suggestion)
+    }
+</suggestions>
