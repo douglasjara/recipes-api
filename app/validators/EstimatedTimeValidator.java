@@ -3,7 +3,6 @@ package validators;
 import play.data.validation.Constraints;
 import play.libs.F;
 import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 
 public class EstimatedTimeValidator extends Constraints.Validator<String> implements ConstraintValidator<EstimatedTimeFormat, String> {
     @Override
@@ -17,6 +16,6 @@ public class EstimatedTimeValidator extends Constraints.Validator<String> implem
 
     @Override
     public F.Tuple<String, Object[]> getErrorMessageKey() {
-        return new F.Tuple<String, Object[]>("est_time", new Object[]{"Estimated time is not valid"});
+        return new F.Tuple<String, Object[]>("Estimated time is not valid", new Object[]{""});
     }
 }

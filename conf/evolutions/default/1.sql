@@ -5,7 +5,7 @@
 
 create table additional_information (
   id                            bigint auto_increment not null,
-  dificulty                     varchar(255),
+  difficulty                    varchar(255),
   guests                        integer,
   price                         varchar(255),
   kal                           varchar(255),

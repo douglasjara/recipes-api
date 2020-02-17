@@ -1,5 +1,7 @@
 package controllers;
 
+import actions.Timed;
+import actions.TimerAction;
 import io.ebean.PagedList;
 import models.*;
 import play.data.Form;
@@ -17,6 +19,7 @@ public class RecipeController extends Controller {
     @Inject
     MessagesApi messagesApi;
 
+    @Timed
     public Result getRecipes(Http.Request request, int page, int maxRows) {
         PagedList<Recipe> recipes = Recipe.getAll(page, maxRows);
         PagedRecipes pagedRecipes = new PagedRecipes(page, recipes.getPageSize(), recipes.getTotalCount(), recipes.getList());
@@ -29,6 +32,7 @@ public class RecipeController extends Controller {
         return Results.status(415);
     }
 
+    @Timed
     public Result getRecipe(Http.Request request, Long id) {
         Messages messages = this.messagesApi.preferred(request);
         Recipe recipe = Recipe.findById(id);
@@ -51,12 +55,13 @@ public class RecipeController extends Controller {
         return Results.status(415);
     }
 
+    @Timed
     @play.db.ebean.Transactional
     public Result createRecipe(Http.Request request) {
         Messages messages = this.messagesApi.preferred(request);
-        Form<Recipe> form = formFactory.form(Recipe.class).bindFromRequest(request);
-        if (form.hasErrors()) return Results.badRequest(form.errorsAsJson());
-        Recipe recipeReceived = form.get();
+        Form<Recipe> recipeForm = formFactory.form(Recipe.class).bindFromRequest(request);
+        if (recipeForm.hasErrors()) return Results.badRequest(recipeForm.errorsAsJson());
+        Recipe recipeReceived = recipeForm.get();
 
         if (Recipe.findByTitle(recipeReceived.getTitle()).size() > 0) {
             ErrorResponse error = new ErrorResponse();
@@ -79,6 +84,7 @@ public class RecipeController extends Controller {
         return Results.status(415);
     }
 
+    @Timed
     @play.db.ebean.Transactional
     public Result updateRecipe(Http.Request request, Long id) {
         Messages messages = this.messagesApi.preferred(request);
@@ -109,6 +115,7 @@ public class RecipeController extends Controller {
         return Results.status(415);
     }
 
+    @Timed
     @play.db.ebean.Transactional
     public Result deleteRecipe(Http.Request request, Long id) {
         Messages messages = this.messagesApi.preferred(request);

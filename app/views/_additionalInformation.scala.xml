@@ -1,7 +1,7 @@
 @(additionalInformation: AdditionalInformation)
 <additionalInformation>
     <id>@additionalInformation.getId()</id>
-    <dificulty>@additionalInformation.getDificulty()</dificulty>
+    <difficulty>@additionalInformation.getDifficulty()</difficulty>
     <guests>@additionalInformation.getGuests()</guests>
     <price>@additionalInformation.getPrice()</price>
     <kal>@additionalInformation.getKal()</kal>
