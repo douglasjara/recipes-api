@@ -2,17 +2,15 @@ package models;
 
 import io.ebean.Finder;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.validation.constraints.Min;
 
 @Entity
 public class AdditionalInformation extends baseModel {
     private String dificulty;
+    @Min(1)
     private Integer guests;
     private String price;
     private String kal;
-
-    //@OneToOne(mappedBy = "additionalInformation")
-    //public Recipe recipe;
 
     private static final Finder<Long, AdditionalInformation> find = new Finder<>(AdditionalInformation.class);
     private static final Finder<Long, Recipe> recipeFind = new Finder<>(Recipe.class);

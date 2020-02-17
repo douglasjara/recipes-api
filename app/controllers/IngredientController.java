@@ -4,32 +4,59 @@ import io.ebean.PagedList;
 import models.*;
 import play.data.Form;
 import play.data.FormFactory;
-import play.data.validation.ValidationError;
 import play.i18n.Messages;
 import play.i18n.MessagesApi;
 import play.libs.Json;
-import play.mvc.*;
+import play.mvc.Controller;
+import play.mvc.Http;
+import play.mvc.Result;
+import play.mvc.Results;
+
 import javax.inject.Inject;
 
-public class RecipeController extends Controller {
+public class IngredientController extends Controller {
     @Inject
     FormFactory formFactory;
     @Inject
     MessagesApi messagesApi;
 
-    public Result getRecipes(Http.Request request, int page, int maxRows) {
-        PagedList<Recipe> recipes = Recipe.getAll(page, maxRows);
-        PagedRecipes pagedRecipes = new PagedRecipes(page, recipes.getPageSize(), recipes.getTotalCount(), recipes.getList());
+    public Result getIngredients(Http.Request request, int page, int maxRows) {
+        PagedList<Ingredient> ingredients = Ingredient.getAll(page, maxRows);
+        PagedIngredients pagedIngredients = new PagedIngredients(page, ingredients.getPageSize(), ingredients.getTotalCount(), ingredients.getList());
 
         if (request.accepts("application/json"))
-            return Results.ok(Json.toJson(pagedRecipes)).as("application/json");
+            return Results.ok(Json.toJson(pagedIngredients)).as("application/json");
         if (request.accepts("application/xml"))
-            return Results.ok(views.xml.pagedRecipes.render(pagedRecipes));
+            return Results.ok(views.xml.pagedIngredients.render(pagedIngredients));
 
         return Results.status(415);
     }
 
-    public Result getRecipe(Http.Request request, Long id) {
+    public Result getIngredientsByRecipeId(Http.Request request, Long recipeId) {
+        Messages messages = this.messagesApi.preferred(request);
+        Ingredient recipe = Ingredient.findById(recipeId);
+        if (recipe == null) {
+            ErrorResponse error = new ErrorResponse();
+            error.error = messages.at("NORECIPE");
+            if (request.accepts("application/xml"))
+                return Results.badRequest(views.xml.errorResponse.render(error));
+            if (request.accepts("application/json"))
+                return Results.badRequest(Json.toJson(error));
+            else
+                return Results.badRequest(error.error);
+        }
+
+        /*List<Ingredient> ingredients = Ingredient.findByRecipeId(recipeId);
+
+        if (request.accepts("application/json"))
+            return Results.ok(Json.toJson(ingredients)).as("application/json");
+        if (request.accepts("application/xml"))
+            return Results.ok(views.xml.ingredients.render(ingredients));*/
+
+        return Results.status(415);
+    }
+
+    public Result getIngredient(Http.Request request, Long id) {
         Messages messages = this.messagesApi.preferred(request);
         Recipe recipe = Recipe.findById(id);
         if (recipe == null) {
@@ -52,7 +79,7 @@ public class RecipeController extends Controller {
     }
 
     @play.db.ebean.Transactional
-    public Result createRecipe(Http.Request request) {
+    public Result createIngredient(Http.Request request, Long recipeId) {
         Messages messages = this.messagesApi.preferred(request);
         Form<Recipe> form = formFactory.form(Recipe.class).bindFromRequest(request);
         if (form.hasErrors()) return Results.badRequest(form.errorsAsJson());
@@ -60,7 +87,7 @@ public class RecipeController extends Controller {
 
         if (Recipe.findByTitle(recipeReceived.getTitle()).size() > 0) {
             ErrorResponse error = new ErrorResponse();
-            error.error = messages.at("RECIPE_EXIST");
+            error.error = "Ese título ya existe";
             if (request.accepts("application/xml"))
                 return Results.status(CONFLICT, views.xml.errorResponse.render(error));
             if (request.accepts("application/json"))
@@ -72,7 +99,7 @@ public class RecipeController extends Controller {
         recipeReceived.createRecipe();
 
         if (request.accepts("application/json"))
-            return Results.ok(play.libs.Json.toJson(recipeReceived));
+            return Results.ok(Json.toJson(recipeReceived));
         if (request.accepts("application/xml"))
             return Results.ok(views.xml.recipe.render(recipeReceived));
 
@@ -80,7 +107,7 @@ public class RecipeController extends Controller {
     }
 
     @play.db.ebean.Transactional
-    public Result updateRecipe(Http.Request request, Long id) {
+    public Result updateIngredient(Http.Request request, Long id) {
         Messages messages = this.messagesApi.preferred(request);
         Form<Recipe> form = formFactory.form(Recipe.class).bindFromRequest(request);
         if (form.hasErrors()) return Results.badRequest(form.errorsAsJson());
@@ -102,7 +129,7 @@ public class RecipeController extends Controller {
         recipeToUpdate.updateRecipe();
 
         if (request.accepts("application/json"))
-            return Results.ok(play.libs.Json.toJson(recipeToUpdate));
+            return Results.ok(Json.toJson(recipeToUpdate));
         if (request.accepts("application/xml"))
             return Results.ok(views.xml.recipe.render(recipeToUpdate));
 
@@ -110,7 +137,7 @@ public class RecipeController extends Controller {
     }
 
     @play.db.ebean.Transactional
-    public Result deleteRecipe(Http.Request request, Long id) {
+    public Result deleteIngredient(Http.Request request, Long id) {
         Messages messages = this.messagesApi.preferred(request);
         Recipe recipeToDelete = Recipe.findById(id);
 
@@ -120,7 +147,7 @@ public class RecipeController extends Controller {
             if (request.accepts("application/xml"))
                 return Results.badRequest(views.xml.errorResponse.render(error));
             if (request.accepts("application/json"))
-                return Results.badRequest(play.libs.Json.toJson(error));
+                return Results.badRequest(Json.toJson(error));
             else
                 return Results.badRequest(error.error);
         }

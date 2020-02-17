@@ -2,18 +2,25 @@ package models;
 
 import io.ebean.Finder;
 import io.ebean.PagedList;
-import play.data.validation.Constraints;
+import org.hibernate.validator.constraints.URL;
+import play.data.validation.Constraints.*;
+import validators.EstimatedTimeFormat;
 import java.util.*;
 import javax.persistence.*;
 
 @Entity
 public class Recipe extends baseModel {
-    @Constraints.Required
+    @Required
     private String title;
+    @EstimatedTimeFormat
     private String estimatedTime;
+    @URL
     private String imageUrl;
-    //public List<Ingredient> ingredients = new ArrayList<Ingredient>() {};
+    @MinLength(50)
     private String howToMake;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    public List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
     @OneToOne(cascade = CascadeType.ALL)
     public AdditionalInformation additionalInformation;

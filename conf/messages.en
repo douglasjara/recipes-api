@@ -1,0 +1,10 @@
+NORECIPE = Recipe doesn't exist
+NOADDINFO = AdditionalInformation doesn't exist
+NOSUGGESTION = Suggestion doesn't exist
+RECIPE_EXIST = This title already exist
+ESTIMATED_TIME_BADFORMAT = Incorrect format. Right format example: 1h 30min
+URL = Must be a valid URL
+error.required = Field is missing
+
+
+

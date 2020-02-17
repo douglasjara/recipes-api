@@ -5,6 +5,8 @@ import models.Recipe;
 import models.Suggestion;
 import play.data.Form;
 import play.data.FormFactory;
+import play.i18n.Messages;
+import play.i18n.MessagesApi;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Http;
@@ -16,12 +18,15 @@ import java.util.List;
 public class SuggestionController extends Controller {
     @Inject
     FormFactory formFactory;
+    @Inject
+    MessagesApi messagesApi;
 
     public Result getSuggestionsByRecipeId(Http.Request request, Long recipeId) {
+        Messages messages = this.messagesApi.preferred(request);
         Recipe recipe = Recipe.findById(recipeId);
         if (recipe == null) {
             ErrorResponse error = new ErrorResponse();
-            error.error = "La receta no existe";
+            error.error = messages.at("NORECIPE");
             if (request.accepts("application/xml"))
                 return Results.badRequest(views.xml.errorResponse.render(error));
             if (request.accepts("application/json"))
@@ -41,10 +46,11 @@ public class SuggestionController extends Controller {
     }
 
     public Result getSuggestion(Http.Request request, Long id) {
+        Messages messages = this.messagesApi.preferred(request);
         Suggestion suggestion = Suggestion.findById(id);
         if (suggestion == null) {
             ErrorResponse error = new ErrorResponse();
-            error.error = "El consejo no existe";
+            error.error = messages.at("NOSUGGESTION");
             if (request.accepts("application/xml"))
                 return Results.badRequest(views.xml.errorResponse.render(error));
             if (request.accepts("application/json"))
@@ -63,6 +69,7 @@ public class SuggestionController extends Controller {
 
     @play.db.ebean.Transactional
     public Result createSuggestion(Http.Request request, Long recipeId) {
+        Messages messages = this.messagesApi.preferred(request);
         Form<Suggestion> form = formFactory.form(Suggestion.class).bindFromRequest(request);
         if (form.hasErrors()) return Results.badRequest(form.errorsAsJson());
         Suggestion suggestionReceived = form.get();
@@ -70,7 +77,7 @@ public class SuggestionController extends Controller {
         Recipe recipe = Recipe.findById(recipeId);
         if (recipe == null) {
             ErrorResponse error = new ErrorResponse();
-            error.error = "La receta no existe";
+            error.error = messages.at("NORECIPE");
             if (request.accepts("application/xml"))
                 return Results.badRequest(views.xml.errorResponse.render(error));
             if (request.accepts("application/json"))
@@ -91,6 +98,7 @@ public class SuggestionController extends Controller {
 
     @play.db.ebean.Transactional
     public Result updateSuggestion(Http.Request request, Long id) {
+        Messages messages = this.messagesApi.preferred(request);
         Form<Suggestion> form = formFactory.form(Suggestion.class).bindFromRequest(request);
         if (form.hasErrors()) return Results.badRequest(form.errorsAsJson());
         Suggestion suggestionReceived = form.get();
@@ -98,7 +106,7 @@ public class SuggestionController extends Controller {
 
         if (suggestionToUpdate==null) {
             ErrorResponse error = new ErrorResponse();
-            error.error = "El consejo no existe";
+            error.error = messages.at("NOSUGGESTION");
             if (request.accepts("application/xml"))
                 return Results.badRequest(views.xml.errorResponse.render(error));
             if (request.accepts("application/json"))
@@ -120,11 +128,12 @@ public class SuggestionController extends Controller {
 
     @play.db.ebean.Transactional
     public Result deleteSuggestion(Http.Request request, Long id) {
+        Messages messages = this.messagesApi.preferred(request);
         Suggestion suggestionToDelete = Suggestion.findById(id);
 
         if (suggestionToDelete==null) {
             ErrorResponse error = new ErrorResponse();
-            error.error = "El consejo no existe";
+            error.error = messages.at("NOSUGGESTION");
             if (request.accepts("application/xml"))
                 return Results.badRequest(views.xml.errorResponse.render(error));
             if (request.accepts("application/json"))

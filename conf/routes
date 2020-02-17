@@ -19,7 +19,7 @@ GET     /recipe/:recipeId/additionalInformation                     controllers.
 GET     /recipe/additionalInformation/:additionalInformationId      controllers.AdditionalInformationController.getAdditionalInformation(request: Request, additionalInformationId: Long)
 POST    /recipe/:recipeId/additionalInformation                     controllers.AdditionalInformationController.createAdditionalInformation(request: Request, recipeId: Long)
 PUT     /recipe/additionalInformation/:additionalInformationId      controllers.AdditionalInformationController.updateAdditionalInformation(request: Request, additionalInformationId: Long)
-#DELETE Para eliminar, se debe elimiar la receta.
+#DELETE Para eliminar, se debe eliminar la receta.
 
 #Recipe Suggestions (1 to N relation)
 GET     /recipe/:recipeId/suggestions           controllers.SuggestionController.getSuggestionsByRecipeId(request: Request, recipeId: Long)
@@ -27,6 +27,14 @@ GET     /recipe/suggestion/:suggestionId        controllers.SuggestionController
 POST    /recipe/:recipeId/suggestion            controllers.SuggestionController.createSuggestion(request: Request, recipeId: Long)
 PUT     /recipe/suggestion/:suggestionId        controllers.SuggestionController.updateSuggestion(request: Request, suggestionId: Long)
 DELETE  /recipe/suggestion/:suggestionId        controllers.SuggestionController.deleteSuggestion(request: Request, suggestionId: Long)
+
+#Recipe Ingredients (N to M relation)
+GET     /recipes/ingredients                    controllers.IngredientController.getIngredients(request: Request, page: Int, maxRows: Int)
+GET     /recipe/:recipeId/ingredients           controllers.IngredientController.getIngredientsByRecipeId(request: Request, recipeId: Long)
+GET     /recipe/ingredient/:ingredientId        controllers.IngredientController.getIngredient(request: Request, ingredientId: Long)
+POST    /recipe/:recipeId/ingredient            controllers.IngredientController.createIngredient(request: Request, recipeId: Long)
+PUT     /recipe/ingredient/:ingredientId        controllers.IngredientController.updateIngredient(request: Request, ingredientId: Long)
+DELETE  /recipe/ingredient/:ingredientId        controllers.IngredientController.deleteIngredient(request: Request, ingredientId: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

@@ -3,12 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="52ad355e-c224-4420-a89b-10ed72234b3a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/AdditionalInformationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/AdditionalInformationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/RecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/RecipeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/SuggestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/SuggestionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/AdditionalInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/AdditionalInformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Ingredient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Recipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/baseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/baseModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/_additionalInformation.scala.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/_additionalInformation.scala.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/_recipe.scala.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/_recipe.scala.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/_ingredient.scala.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/_ingredient.scala.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/application.conf" beforeDir="false" afterPath="$PROJECT_DIR$/conf/application.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/evolutions/default/1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/conf/evolutions/default/1.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/routes" beforeDir="false" afterPath="$PROJECT_DIR$/conf/routes" afterDir="false" />
     </list>
@@ -24,6 +26,14 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -48,7 +58,7 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/conf" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -56,10 +66,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="controllers" />
       <recent name="models" />
+      <recent name="controllers" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\douglas.jara\Documents\personal\master\2. server side\2. rest play\Tareas\recipes\conf" />
       <recent name="C:\Users\douglas.jara\Documents\personal\master\2. server side\2. rest play\Tareas\recipes\app\views" />
       <recent name="C:\Users\douglas.jara\Documents\personal\master\2. server side\2. rest play\Tareas\recipes\app\models" />
       <recent name="C:\Users\douglas.jara\Documents\personal\master\2. server side\2. rest play\Tareas\recipes\app\controllers" />
@@ -123,10 +134,14 @@
       <screen x="-1600" y="159" width="1600" height="860" />
     </state>
     <state x="-1208" y="248" key="#Inspections/0.0.1366.728/-1600.159.1600.860@-1600.159.1600.860" timestamp="1581436035999" />
-    <state x="-995" y="274" key="#com.intellij.ide.util.MemberChooser" timestamp="1581636897903">
+    <state x="-1049" y="393" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1581816545334">
       <screen x="-1600" y="159" width="1600" height="860" />
     </state>
-    <state x="-995" y="274" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/-1600.159.1600.860@-1600.159.1600.860" timestamp="1581636897903" />
+    <state x="-1049" y="393" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728/-1600.159.1600.860@-1600.159.1600.860" timestamp="1581816545334" />
+    <state x="-995" y="274" key="#com.intellij.ide.util.MemberChooser" timestamp="1581901800769">
+      <screen x="-1600" y="159" width="1600" height="860" />
+    </state>
+    <state x="-995" y="274" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/-1600.159.1600.860@-1600.159.1600.860" timestamp="1581901800769" />
     <state x="-1070" y="337" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1581436170209">
       <screen x="-1600" y="159" width="1600" height="860" />
     </state>

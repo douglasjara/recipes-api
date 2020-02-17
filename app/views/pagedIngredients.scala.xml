@@ -1,0 +1,10 @@
+@(ingredients: PagedIngredients)
+<?xml version="1.0" encoding="UTF-8"?>
+<page>@ingredients.getPage()</page>
+<rows>@ingredients.getRows()</rows>
+<total>@ingredients.getTotal()</total>
+<ingredients>
+        @for(ingredient <- ingredients.getIngredients()) {
+                @_ingredient(ingredient)
+        }
+</ingredients>

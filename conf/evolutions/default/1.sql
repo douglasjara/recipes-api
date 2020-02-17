@@ -15,6 +15,15 @@ create table additional_information (
   constraint pk_additional_information primary key (id)
 );
 
+create table ingredient (
+  id                            bigint auto_increment not null,
+  name                          varchar(255),
+  version                       bigint not null,
+  when_created                  timestamp not null,
+  when_updated                  timestamp not null,
+  constraint pk_ingredient primary key (id)
+);
+
 create table recipe (
   id                            bigint auto_increment not null,
   title                         varchar(255),
@@ -27,6 +36,12 @@ create table recipe (
   when_updated                  timestamp not null,
   constraint uq_recipe_additional_information_id unique (additional_information_id),
   constraint pk_recipe primary key (id)
+);
+
+create table recipe_ingredient (
+  recipe_id                     bigint not null,
+  ingredient_id                 bigint not null,
+  constraint pk_recipe_ingredient primary key (recipe_id,ingredient_id)
 );
 
 create table suggestion (
@@ -42,6 +57,12 @@ create table suggestion (
 
 alter table recipe add constraint fk_recipe_additional_information_id foreign key (additional_information_id) references additional_information (id) on delete restrict on update restrict;
 
+create index ix_recipe_ingredient_recipe on recipe_ingredient (recipe_id);
+alter table recipe_ingredient add constraint fk_recipe_ingredient_recipe foreign key (recipe_id) references recipe (id) on delete restrict on update restrict;
+
+create index ix_recipe_ingredient_ingredient on recipe_ingredient (ingredient_id);
+alter table recipe_ingredient add constraint fk_recipe_ingredient_ingredient foreign key (ingredient_id) references ingredient (id) on delete restrict on update restrict;
+
 create index ix_suggestion_recipe_id on suggestion (recipe_id);
 alter table suggestion add constraint fk_suggestion_recipe_id foreign key (recipe_id) references recipe (id) on delete restrict on update restrict;
 
@@ -50,12 +71,22 @@ alter table suggestion add constraint fk_suggestion_recipe_id foreign key (recip
 
 alter table recipe drop constraint if exists fk_recipe_additional_information_id;
 
+alter table recipe_ingredient drop constraint if exists fk_recipe_ingredient_recipe;
+drop index if exists ix_recipe_ingredient_recipe;
+
+alter table recipe_ingredient drop constraint if exists fk_recipe_ingredient_ingredient;
+drop index if exists ix_recipe_ingredient_ingredient;
+
 alter table suggestion drop constraint if exists fk_suggestion_recipe_id;
 drop index if exists ix_suggestion_recipe_id;
 
 drop table if exists additional_information;
 
+drop table if exists ingredient;
+
 drop table if exists recipe;
+
+drop table if exists recipe_ingredient;
 
 drop table if exists suggestion;
 
