@@ -4,16 +4,11 @@ import io.ebean.Finder;
 import io.ebean.PagedList;
 import play.data.validation.Constraints;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import java.util.Set;
 
 @Entity
 public class Ingredient extends baseModel {
     @Constraints.Required
     private String name;
-
-    //@ManyToMany(mappedBy = "ingredients")
-    //public Set<Recipe> recipes;
 
     private static final Finder<Long, Ingredient> find = new Finder<>(Ingredient.class);
 

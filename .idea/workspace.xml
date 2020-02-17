@@ -3,13 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="52ad355e-c224-4420-a89b-10ed72234b3a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/RecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/RecipeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/AdditionalInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/AdditionalInformation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/validators/EstimatedTimeValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/validators/EstimatedTimeValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/_additionalInformation.scala.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/_additionalInformation.scala.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/evolutions/default/1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/conf/evolutions/default/1.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/messages.en" beforeDir="false" afterPath="$PROJECT_DIR$/conf/messages.en" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/messages.es" beforeDir="false" afterPath="$PROJECT_DIR$/conf/messages.es" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Ingredient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,8 +57,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="validators" />
       <recent name="models" />
+      <recent name="validators" />
       <recent name="controllers" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -139,10 +133,10 @@
       <screen x="-1600" y="159" width="1600" height="860" />
     </state>
     <state x="-1049" y="393" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728/-1600.159.1600.860@-1600.159.1600.860" timestamp="1581816545334" />
-    <state x="-995" y="274" key="#com.intellij.ide.util.MemberChooser" timestamp="1581933183797">
+    <state x="-995" y="274" key="#com.intellij.ide.util.MemberChooser" timestamp="1581964535494">
       <screen x="-1600" y="159" width="1600" height="860" />
     </state>
-    <state x="-995" y="274" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/-1600.159.1600.860@-1600.159.1600.860" timestamp="1581933183797" />
+    <state x="-995" y="274" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/-1600.159.1600.860@-1600.159.1600.860" timestamp="1581964535494" />
     <state x="-1070" y="337" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1581436170209">
       <screen x="-1600" y="159" width="1600" height="860" />
     </state>
