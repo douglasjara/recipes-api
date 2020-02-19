@@ -1,5 +1,6 @@
 package controllers;
 
+import actions.Timed;
 import models.ErrorResponse;
 import models.Recipe;
 import models.Suggestion;
@@ -15,6 +16,7 @@ import play.mvc.Results;
 import javax.inject.Inject;
 import java.util.List;
 
+@Timed
 public class SuggestionController extends Controller {
     @Inject
     FormFactory formFactory;

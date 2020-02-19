@@ -1,7 +1,9 @@
 NORECIPE = Recipe doesn't exist
 NOADDINFO = AdditionalInformation doesn't exist
 NOSUGGESTION = Suggestion doesn't exist
+NOINGREDIENT = Ingredient doesn't exist
 RECIPE_EXIST = Recipe title already exist
+INGREDIENT_EXIST = Ingredient name already exist
 ESTIMATED_TIME_BADFORMAT = Incorrect format. Right format examples: 1h 30min or 30min or 1h
 DIFFICULTY_OPTIONS = Valid options: easy, medium or hard
 error.required = Field is missing

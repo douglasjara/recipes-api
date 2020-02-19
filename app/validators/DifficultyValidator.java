@@ -12,7 +12,7 @@ public class DifficultyValidator extends Constraints.Validator<String> implement
 
     @Override
     public boolean isValid(String difficulty) {
-         return difficulty=="easy" || difficulty=="medium" || difficulty=="hard";
+        return difficulty!=null && (difficulty.equals("easy") || difficulty.equals("medium") || difficulty.equals("hard"));
     }
 
     @Override

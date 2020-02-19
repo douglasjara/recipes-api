@@ -1,5 +1,6 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.ebean.Finder;
 import io.ebean.PagedList;
 import org.hibernate.validator.constraints.URL;
@@ -8,7 +9,11 @@ import validators.EstimatedTimeFormat;
 import java.util.*;
 import javax.persistence.*;
 
+// N-M relation solution based on:
+// https://stackoverflow.com/questions/27204672/custom-bridge-table-in-playframework-ebean
+
 @Entity
+@JsonIgnoreProperties({"_ebean_intercept", "_$dbName"})
 public class Recipe extends baseModel {
     @Required
     private String title;
@@ -19,11 +24,11 @@ public class Recipe extends baseModel {
     @MinLength(50)
     private String howToMake;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    public List<Ingredient> ingredients = new ArrayList<Ingredient>();
-
     @OneToOne(cascade = CascadeType.ALL)
     public AdditionalInformation additionalInformation;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<RecipeIngredient> recipeIngredients;
 
     @OneToMany(cascade = CascadeType.ALL)
     public List<Suggestion> suggestions;
@@ -80,12 +85,6 @@ public class Recipe extends baseModel {
     }
 
     public static List<Recipe> findByTitle(String title) {
-        List<Recipe> recetas = find.query().where().like("title", title).findList();
-
-        for (Recipe receta : recetas) {
-            System.out.println(receta.getId() + ":" + receta.title);
-        }
-
         return find.query().where().like("title", title).findList();
     }
 

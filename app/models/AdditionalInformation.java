@@ -1,6 +1,7 @@
 package models;
 
 import io.ebean.Finder;
+import play.data.validation.Constraints;
 import validators.DifficultyOptions;
 
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.validation.constraints.Min;
 
 @Entity
 public class AdditionalInformation extends baseModel {
+    @Constraints.Required
     @DifficultyOptions
     private String difficulty;
     @Min(1)

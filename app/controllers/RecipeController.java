@@ -1,25 +1,23 @@
 package controllers;
 
 import actions.Timed;
-import actions.TimerAction;
 import io.ebean.PagedList;
 import models.*;
 import play.data.Form;
 import play.data.FormFactory;
-import play.data.validation.ValidationError;
 import play.i18n.Messages;
 import play.i18n.MessagesApi;
 import play.libs.Json;
 import play.mvc.*;
 import javax.inject.Inject;
 
+@Timed
 public class RecipeController extends Controller {
     @Inject
     FormFactory formFactory;
     @Inject
     MessagesApi messagesApi;
 
-    @Timed
     public Result getRecipes(Http.Request request, int page, int maxRows) {
         PagedList<Recipe> recipes = Recipe.getAll(page, maxRows);
         PagedRecipes pagedRecipes = new PagedRecipes(page, recipes.getPageSize(), recipes.getTotalCount(), recipes.getList());
@@ -32,7 +30,6 @@ public class RecipeController extends Controller {
         return Results.status(415);
     }
 
-    @Timed
     public Result getRecipe(Http.Request request, Long id) {
         Messages messages = this.messagesApi.preferred(request);
         Recipe recipe = Recipe.findById(id);
@@ -55,7 +52,6 @@ public class RecipeController extends Controller {
         return Results.status(415);
     }
 
-    @Timed
     @play.db.ebean.Transactional
     public Result createRecipe(Http.Request request) {
         Messages messages = this.messagesApi.preferred(request);
@@ -84,7 +80,6 @@ public class RecipeController extends Controller {
         return Results.status(415);
     }
 
-    @Timed
     @play.db.ebean.Transactional
     public Result updateRecipe(Http.Request request, Long id) {
         Messages messages = this.messagesApi.preferred(request);
@@ -115,7 +110,6 @@ public class RecipeController extends Controller {
         return Results.status(415);
     }
 
-    @Timed
     @play.db.ebean.Transactional
     public Result deleteRecipe(Http.Request request, Long id) {
         Messages messages = this.messagesApi.preferred(request);
