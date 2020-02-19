@@ -3,7 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="52ad355e-c224-4420-a89b-10ed72234b3a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/actions/TimerAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/actions/TimerAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/IngredientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/IngredientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/RecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/RecipeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/SuggestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/SuggestionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/AdditionalInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/AdditionalInformation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Ingredient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Recipe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/RecipeIngredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/RecipeIngredient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/baseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/baseModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/validators/DifficultyValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/validators/DifficultyValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/_recipe.scala.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/_recipe.scala.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/evolutions/default/1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/conf/evolutions/default/1.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/messages.en" beforeDir="false" afterPath="$PROJECT_DIR$/conf/messages.en" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/messages.es" beforeDir="false" afterPath="$PROJECT_DIR$/conf/messages.es" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/routes" beforeDir="false" afterPath="$PROJECT_DIR$/conf/routes" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +63,7 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/conf" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/views" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -57,13 +71,13 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="controllers" />
       <recent name="models" />
       <recent name="validators" />
-      <recent name="controllers" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\douglas.jara\Documents\personal\master\2. server side\2. rest play\Tareas\recipes\conf" />
       <recent name="C:\Users\douglas.jara\Documents\personal\master\2. server side\2. rest play\Tareas\recipes\app\views" />
+      <recent name="C:\Users\douglas.jara\Documents\personal\master\2. server side\2. rest play\Tareas\recipes\conf" />
       <recent name="C:\Users\douglas.jara\Documents\personal\master\2. server side\2. rest play\Tareas\recipes\app\models" />
       <recent name="C:\Users\douglas.jara\Documents\personal\master\2. server side\2. rest play\Tareas\recipes\app\controllers" />
     </key>

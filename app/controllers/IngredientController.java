@@ -1,5 +1,6 @@
 package controllers;
 
+import actions.Timed;
 import io.ebean.PagedList;
 import models.*;
 import play.data.Form;
@@ -11,9 +12,9 @@ import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Results;
-
 import javax.inject.Inject;
 
+@Timed
 public class IngredientController extends Controller {
     @Inject
     FormFactory formFactory;
@@ -32,34 +33,10 @@ public class IngredientController extends Controller {
         return Results.status(415);
     }
 
-    public Result getIngredientsByRecipeId(Http.Request request, Long recipeId) {
-        Messages messages = this.messagesApi.preferred(request);
-        Ingredient recipe = Ingredient.findById(recipeId);
-        if (recipe == null) {
-            ErrorResponse error = new ErrorResponse();
-            error.error = messages.at("NORECIPE");
-            if (request.accepts("application/xml"))
-                return Results.badRequest(views.xml.errorResponse.render(error));
-            if (request.accepts("application/json"))
-                return Results.badRequest(Json.toJson(error));
-            else
-                return Results.badRequest(error.error);
-        }
-
-        /*List<Ingredient> ingredients = Ingredient.findByRecipeId(recipeId);
-
-        if (request.accepts("application/json"))
-            return Results.ok(Json.toJson(ingredients)).as("application/json");
-        if (request.accepts("application/xml"))
-            return Results.ok(views.xml.ingredients.render(ingredients));*/
-
-        return Results.status(415);
-    }
-
     public Result getIngredient(Http.Request request, Long id) {
         Messages messages = this.messagesApi.preferred(request);
-        Recipe recipe = Recipe.findById(id);
-        if (recipe == null) {
+        Ingredient ingredient = Ingredient.findById(id);
+        if (ingredient == null) {
             ErrorResponse error = new ErrorResponse();
             error.error = messages.at("NORECIPE");
             if (request.accepts("application/xml"))
@@ -71,23 +48,23 @@ public class IngredientController extends Controller {
         }
 
         if (request.accepts("application/json"))
-            return Results.ok(Json.toJson(recipe)).as("application/json");
+            return Results.ok(Json.toJson(ingredient)).as("application/json");
         if (request.accepts("application/xml"))
-            return Results.ok(views.xml.recipe.render(recipe));
+            return Results.ok(views.xml.ingredient.render(ingredient));
 
         return Results.status(415);
     }
 
     @play.db.ebean.Transactional
-    public Result createIngredient(Http.Request request, Long recipeId) {
+    public Result createIngredient(Http.Request request) {
         Messages messages = this.messagesApi.preferred(request);
-        Form<Recipe> form = formFactory.form(Recipe.class).bindFromRequest(request);
+        Form<Ingredient> form = formFactory.form(Ingredient.class).bindFromRequest(request);
         if (form.hasErrors()) return Results.badRequest(form.errorsAsJson());
-        Recipe recipeReceived = form.get();
+        Ingredient ingredientReceived = form.get();
 
-        if (Recipe.findByTitle(recipeReceived.getTitle()).size() > 0) {
+        if (Ingredient.findByName(ingredientReceived.getName()).size() > 0) {
             ErrorResponse error = new ErrorResponse();
-            error.error = "Ese título ya existe";
+            error.error = messages.at("INGREDIENT_EXIST");
             if (request.accepts("application/xml"))
                 return Results.status(CONFLICT, views.xml.errorResponse.render(error));
             if (request.accepts("application/json"))
@@ -96,12 +73,12 @@ public class IngredientController extends Controller {
                 return Results.status(CONFLICT, error.error);
         }
 
-        recipeReceived.createRecipe();
+        ingredientReceived.createIngredient();
 
         if (request.accepts("application/json"))
-            return Results.ok(Json.toJson(recipeReceived));
+            return Results.ok(Json.toJson(ingredientReceived));
         if (request.accepts("application/xml"))
-            return Results.ok(views.xml.recipe.render(recipeReceived));
+            return Results.ok(views.xml.ingredient.render(ingredientReceived));
 
         return Results.status(415);
     }
@@ -109,14 +86,14 @@ public class IngredientController extends Controller {
     @play.db.ebean.Transactional
     public Result updateIngredient(Http.Request request, Long id) {
         Messages messages = this.messagesApi.preferred(request);
-        Form<Recipe> form = formFactory.form(Recipe.class).bindFromRequest(request);
+        Form<Ingredient> form = formFactory.form(Ingredient.class).bindFromRequest(request);
         if (form.hasErrors()) return Results.badRequest(form.errorsAsJson());
-        Recipe recipeReceived = form.get();
-        Recipe recipeToUpdate = Recipe.findById(id);
+        Ingredient ingredientReceived = form.get();
+        Ingredient ingredientToUpdate = Ingredient.findById(id);
 
-        if (recipeToUpdate==null) {
+        if (ingredientToUpdate==null) {
             ErrorResponse error = new ErrorResponse();
-            error.error = messages.at("NORECIPE");
+            error.error = messages.at("NOINGREDIENT");
             if (request.accepts("application/xml"))
                 return Results.badRequest(views.xml.errorResponse.render(error));
             if (request.accepts("application/json"))
@@ -125,13 +102,13 @@ public class IngredientController extends Controller {
                 return Results.badRequest(error.error);
         }
 
-        recipeToUpdate.merge(recipeReceived);
-        recipeToUpdate.updateRecipe();
+        ingredientToUpdate.merge(ingredientReceived);
+        ingredientToUpdate.updateIngredient();
 
         if (request.accepts("application/json"))
-            return Results.ok(Json.toJson(recipeToUpdate));
+            return Results.ok(Json.toJson(ingredientToUpdate));
         if (request.accepts("application/xml"))
-            return Results.ok(views.xml.recipe.render(recipeToUpdate));
+            return Results.ok(views.xml.ingredient.render(ingredientToUpdate));
 
         return Results.status(415);
     }
@@ -139,9 +116,9 @@ public class IngredientController extends Controller {
     @play.db.ebean.Transactional
     public Result deleteIngredient(Http.Request request, Long id) {
         Messages messages = this.messagesApi.preferred(request);
-        Recipe recipeToDelete = Recipe.findById(id);
+        Ingredient ingredientToDelete = Ingredient.findById(id);
 
-        if (recipeToDelete==null) {
+        if (ingredientToDelete==null) {
             ErrorResponse error = new ErrorResponse();
             error.error = messages.at("NORECIPE");
             if (request.accepts("application/xml"))
@@ -152,7 +129,7 @@ public class IngredientController extends Controller {
                 return Results.badRequest(error.error);
         }
 
-        recipeToDelete.deleteRecipe(id);
+        ingredientToDelete.deleteIngredient(id);
 
         return Results.ok();
     }
