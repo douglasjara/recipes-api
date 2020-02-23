@@ -2,18 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52ad355e-c224-4420-a89b-10ed72234b3a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/modules/recipes-api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/recipes-api.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/actions/TimerAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/actions/TimerAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/AdditionalInformationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/AdditionalInformationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/IngredientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/IngredientController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/RecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/RecipeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/RecipeIngredientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/RecipeIngredientController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/SuggestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/SuggestionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/AdditionalInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/AdditionalInformation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Ingredient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Recipe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/RecipeIngredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/RecipeIngredient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/baseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/baseModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/validators/DifficultyValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/validators/DifficultyValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/_recipe.scala.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/_recipe.scala.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.sbt" beforeDir="false" afterPath="$PROJECT_DIR$/build.sbt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/evolutions/default/1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/conf/evolutions/default/1.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/messages.en" beforeDir="false" afterPath="$PROJECT_DIR$/conf/messages.en" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/messages.es" beforeDir="false" afterPath="$PROJECT_DIR$/conf/messages.es" afterDir="false" />
@@ -63,6 +63,7 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last.edited.regexp" value="Zero" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/views" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -109,8 +110,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="4737512069632" />
-        <entry key="$PROJECT_DIR$/build.sbt" value="443191580" />
+        <entry key="$PROJECT_DIR$/build.sbt" value="847402224" />
         <entry key="$PROJECT_DIR$/project/build.properties" value="2868604264" />
         <entry key="$PROJECT_DIR$/project/plugins.sbt" value="4174363683" />
       </map>
@@ -143,14 +143,18 @@
       <screen x="-1600" y="159" width="1600" height="860" />
     </state>
     <state x="-1208" y="248" key="#Inspections/0.0.1366.728/-1600.159.1600.860@-1600.159.1600.860" timestamp="1581436035999" />
+    <state x="-1208" y="248" key="#Intentions" timestamp="1582374024555">
+      <screen x="-1600" y="159" width="1600" height="860" />
+    </state>
+    <state x="-1208" y="248" key="#Intentions/0.0.1366.728/-1600.159.1600.860@-1600.159.1600.860" timestamp="1582374024555" />
     <state x="-1049" y="393" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1581816545334">
       <screen x="-1600" y="159" width="1600" height="860" />
     </state>
     <state x="-1049" y="393" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728/-1600.159.1600.860@-1600.159.1600.860" timestamp="1581816545334" />
-    <state x="-995" y="274" key="#com.intellij.ide.util.MemberChooser" timestamp="1581964535494">
+    <state x="-995" y="274" key="#com.intellij.ide.util.MemberChooser" timestamp="1582402782217">
       <screen x="-1600" y="159" width="1600" height="860" />
     </state>
-    <state x="-995" y="274" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/-1600.159.1600.860@-1600.159.1600.860" timestamp="1581964535494" />
+    <state x="-995" y="274" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/-1600.159.1600.860@-1600.159.1600.860" timestamp="1582402782217" />
     <state x="-1070" y="337" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1581436170209">
       <screen x="-1600" y="159" width="1600" height="860" />
     </state>
@@ -159,10 +163,10 @@
       <screen x="-1600" y="159" width="1600" height="860" />
     </state>
     <state x="-1299" y="170" key="SettingsEditor/0.0.1366.728/-1600.159.1600.860@-1600.159.1600.860" timestamp="1581340526015" />
-    <state x="-1104" y="414" key="com.intellij.ide.util.TipDialog" timestamp="1581469074852">
+    <state x="-1104" y="414" key="com.intellij.ide.util.TipDialog" timestamp="1582369403351">
       <screen x="-1600" y="159" width="1600" height="860" />
     </state>
-    <state x="-1104" y="414" key="com.intellij.ide.util.TipDialog/0.0.1366.728/-1600.159.1600.860@-1600.159.1600.860" timestamp="1581469074852" />
+    <state x="-1104" y="414" key="com.intellij.ide.util.TipDialog/0.0.1366.728/-1600.159.1600.860@-1600.159.1600.860" timestamp="1582369403351" />
     <state x="-1096" y="483" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1581474597552">
       <screen x="-1600" y="159" width="1600" height="860" />
     </state>

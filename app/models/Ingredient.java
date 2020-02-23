@@ -54,7 +54,7 @@ public class Ingredient extends baseModel {
     }
 
     public static List<Ingredient> findByName(String title) {
-        return find.query().where().like("name", title).findList();
+        return find.query().where().ilike("name", title).findList();
     }
 
     public static Boolean deleteIngredient(Long id) {

@@ -1,8 +1,8 @@
 package models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import io.ebean.Finder;
-import io.ebean.PagedList;
+import io.ebean.*;
+import io.ebean.Query;
 import org.hibernate.validator.constraints.URL;
 import play.data.validation.Constraints.*;
 import validators.EstimatedTimeFormat;
@@ -80,12 +80,47 @@ public class Recipe extends baseModel {
                 .findPagedList();
     }
 
+    public static PagedList<Recipe> searchRecipes(int page, int maxRows, String title, String ingredients, Float price, Integer kal) {
+        page = page == 0 ? 1 : page;
+        maxRows = maxRows>10 || maxRows == 0 ? 10 : maxRows;
+
+        List<String> ingredientsToSearch= Arrays.asList(ingredients.toLowerCase().split("\\s*(=>|,|\\s)\\s*"));
+
+        return find.query()
+                .where()
+                .ilike("title", "%"+title+"%")
+                .and()
+                .in("recipeIngredients.ingredient.name", ingredientsToSearch)
+                .gt("additionalInformation.price", price)
+                .gt("additionalInformation.kal", kal)
+                .setFirstRow((page - 1) * maxRows)
+                .setMaxRows(maxRows)
+                .orderBy("title")
+                .findPagedList();
+    }
+
+    public static PagedList<Recipe> searchRecipes(int page, int maxRows, String title, Float price, Integer kal) {
+        page = page == 0 ? 1 : page;
+        maxRows = maxRows>10 || maxRows == 0 ? 10 : maxRows;
+
+        return find.query()
+                .where()
+                .ilike("title", "%"+title+"%")
+                .and()
+                .gt("additionalInformation.price", price)
+                .gt("additionalInformation.kal", kal)
+                .setFirstRow((page - 1) * maxRows)
+                .setMaxRows(maxRows)
+                .orderBy("title")
+                .findPagedList();
+    }
+
     public static Recipe findById(Long id) {
         return find.byId(id);
     }
 
     public static List<Recipe> findByTitle(String title) {
-        return find.query().where().like("title", title).findList();
+        return find.query().where().ilike("title", title).findList();
     }
 
     public Boolean deleteRecipe(Long id) {

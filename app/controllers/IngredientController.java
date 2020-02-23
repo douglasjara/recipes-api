@@ -3,6 +3,8 @@ package controllers;
 import actions.Timed;
 import io.ebean.PagedList;
 import models.*;
+import play.cache.Cached;
+import play.cache.SyncCacheApi;
 import play.data.Form;
 import play.data.FormFactory;
 import play.i18n.Messages;
@@ -20,7 +22,10 @@ public class IngredientController extends Controller {
     FormFactory formFactory;
     @Inject
     MessagesApi messagesApi;
+    @Inject
+    SyncCacheApi cache;
 
+    @Cached(key="getIngredients", duration = 5)
     public Result getIngredients(Http.Request request, int page, int maxRows) {
         PagedList<Ingredient> ingredients = Ingredient.getAll(page, maxRows);
         PagedIngredients pagedIngredients = new PagedIngredients(page, ingredients.getPageSize(), ingredients.getTotalCount(), ingredients.getList());
@@ -33,6 +38,7 @@ public class IngredientController extends Controller {
         return Results.status(415);
     }
 
+    @Cached(key="getIngredient", duration = 5)
     public Result getIngredient(Http.Request request, Long id) {
         Messages messages = this.messagesApi.preferred(request);
         Ingredient ingredient = Ingredient.findById(id);
@@ -61,6 +67,7 @@ public class IngredientController extends Controller {
         Form<Ingredient> form = formFactory.form(Ingredient.class).bindFromRequest(request);
         if (form.hasErrors()) return Results.badRequest(form.errorsAsJson());
         Ingredient ingredientReceived = form.get();
+        ingredientReceived.setName(ingredientReceived.getName().toLowerCase());
 
         if (Ingredient.findByName(ingredientReceived.getName()).size() > 0) {
             ErrorResponse error = new ErrorResponse();
@@ -74,6 +81,7 @@ public class IngredientController extends Controller {
         }
 
         ingredientReceived.createIngredient();
+        removeCache();
 
         if (request.accepts("application/json"))
             return Results.ok(Json.toJson(ingredientReceived));
@@ -90,6 +98,7 @@ public class IngredientController extends Controller {
         if (form.hasErrors()) return Results.badRequest(form.errorsAsJson());
         Ingredient ingredientReceived = form.get();
         Ingredient ingredientToUpdate = Ingredient.findById(id);
+        ingredientReceived.setName(ingredientReceived.getName().toLowerCase());
 
         if (ingredientToUpdate==null) {
             ErrorResponse error = new ErrorResponse();
@@ -104,6 +113,7 @@ public class IngredientController extends Controller {
 
         ingredientToUpdate.merge(ingredientReceived);
         ingredientToUpdate.updateIngredient();
+        removeCache();
 
         if (request.accepts("application/json"))
             return Results.ok(Json.toJson(ingredientToUpdate));
@@ -130,7 +140,13 @@ public class IngredientController extends Controller {
         }
 
         ingredientToDelete.deleteIngredient(id);
+        removeCache();
 
         return Results.ok();
+    }
+
+    private void removeCache() {
+        this.cache.remove("getIngredients");
+        this.cache.remove("getIngredient");
     }
 }

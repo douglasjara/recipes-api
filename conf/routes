@@ -9,6 +9,7 @@ GET    /tutorial                    controllers.HomeController.tutorial
 
 #Recipe
 GET     /recipes                      controllers.RecipeController.getRecipes(request: Request, page: Int, maxRows: Int)
+GET     /recipes/search               controllers.RecipeController.searchRecipes(request: Request, page: Int, maxRows: Int, title: String, ingredients: String, price: Float, kal: Integer)
 GET     /recipe/:recipeId             controllers.RecipeController.getRecipe(request: Request, recipeId: Long)
 POST    /recipe                       controllers.RecipeController.createRecipe(request: Request)
 PUT     /recipe/:recipeId             controllers.RecipeController.updateRecipe(request: Request, recipeId: Long)
