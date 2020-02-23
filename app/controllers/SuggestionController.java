@@ -4,6 +4,8 @@ import actions.Timed;
 import models.ErrorResponse;
 import models.Recipe;
 import models.Suggestion;
+import play.cache.Cached;
+import play.cache.SyncCacheApi;
 import play.data.Form;
 import play.data.FormFactory;
 import play.i18n.Messages;
@@ -22,7 +24,10 @@ public class SuggestionController extends Controller {
     FormFactory formFactory;
     @Inject
     MessagesApi messagesApi;
+    @Inject
+    SyncCacheApi cache;
 
+    @Cached(key="getSuggestionsByRecipeId", duration = 5)
     public Result getSuggestionsByRecipeId(Http.Request request, Long recipeId) {
         Messages messages = this.messagesApi.preferred(request);
         Recipe recipe = Recipe.findById(recipeId);
@@ -47,6 +52,7 @@ public class SuggestionController extends Controller {
         return Results.status(415);
     }
 
+    @Cached(key="getSuggestion", duration = 5)
     public Result getSuggestion(Http.Request request, Long id) {
         Messages messages = this.messagesApi.preferred(request);
         Suggestion suggestion = Suggestion.findById(id);
@@ -89,6 +95,7 @@ public class SuggestionController extends Controller {
         }
         recipe.addSuggestion(suggestionReceived);
         recipe.updateRecipe();
+        removeCache();
 
         if (request.accepts("application/json"))
             return Results.ok(Json.toJson(suggestionReceived));
@@ -119,6 +126,7 @@ public class SuggestionController extends Controller {
 
         suggestionToUpdate.merge(suggestionReceived);
         suggestionToUpdate.updateSuggestion();
+        removeCache();
 
         if (request.accepts("application/json"))
             return Results.ok(Json.toJson(suggestionToUpdate));
@@ -145,7 +153,13 @@ public class SuggestionController extends Controller {
         }
 
         suggestionToDelete.deleteSuggestion(id);
+        removeCache();
 
         return Results.ok();
+    }
+
+    private void removeCache() {
+        this.cache.remove("getSuggestionsByRecipeId");
+        this.cache.remove("getSuggestion");
     }
 }

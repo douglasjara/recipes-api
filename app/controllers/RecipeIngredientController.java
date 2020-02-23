@@ -76,6 +76,17 @@ public class RecipeIngredientController extends Controller {
                 return Results.badRequest(error.error);
         }
 
+        if (RecipeIngredient.findRecipeIngredient(recipeId, ingredientId)!=null) {
+            ErrorResponse error = new ErrorResponse();
+            error.error = messages.at("RECIPE_INGREDIENT_EXIST");
+            if (request.accepts("application/xml"))
+                return Results.badRequest(views.xml.errorResponse.render(error));
+            if (request.accepts("application/json"))
+                return Results.badRequest(Json.toJson(error));
+            else
+                return Results.badRequest(error.error);
+        }
+
         recipeIngredientReceived.setRecipe(recipe);
         recipeIngredientReceived.setIngredient(ingredient);
         recipeIngredientReceived.createRecipeIngredient();
@@ -94,6 +105,7 @@ public class RecipeIngredientController extends Controller {
         Form<RecipeIngredient> form = formFactory.form(RecipeIngredient.class).bindFromRequest(request);
         if (form.hasErrors()) return Results.badRequest(form.errorsAsJson());
         RecipeIngredient recipeIngredientReceived = form.get();
+        RecipeIngredient recipeIngredientToUpdate = RecipeIngredient.findRecipeIngredient(recipeId, ingredientId);
 
         Recipe recipe = Recipe.findById(recipeId);
         if (recipe == null) {
@@ -119,15 +131,26 @@ public class RecipeIngredientController extends Controller {
                 return Results.badRequest(error.error);
         }
 
-        recipeIngredientReceived.setRecipe(recipe);
-        recipeIngredientReceived.setIngredient(ingredient);
-        recipeIngredientReceived.merge(recipeIngredientReceived);
-        recipeIngredientReceived.updateRecipeIngredient();
+        if (recipeIngredientToUpdate==null) {
+            ErrorResponse error = new ErrorResponse();
+            error.error = messages.at("NORECIPE_INGREDIENT");
+            if (request.accepts("application/xml"))
+                return Results.badRequest(views.xml.errorResponse.render(error));
+            if (request.accepts("application/json"))
+                return Results.badRequest(Json.toJson(error));
+            else
+                return Results.badRequest(error.error);
+        }
+
+        recipeIngredientToUpdate.setRecipe(recipe);
+        recipeIngredientToUpdate.setIngredient(ingredient);
+        recipeIngredientToUpdate.merge(recipeIngredientReceived);
+        recipeIngredientToUpdate.updateRecipeIngredient();
 
         if (request.accepts("application/json"))
-            return Results.ok(Json.toJson(recipeIngredientReceived));
+            return Results.ok(Json.toJson(recipeIngredientToUpdate));
         if (request.accepts("application/xml"))
-            return Results.ok(views.xml.recipeIngredient.render(recipeIngredientReceived));
+            return Results.ok(views.xml.recipeIngredient.render(recipeIngredientToUpdate));
 
         return Results.status(415);
     }

@@ -100,6 +100,14 @@ public class RecipeIngredient extends Model {
         return this;
     }
 
+    public static RecipeIngredient findRecipeIngredient(Long recipeId, Long ingredientId) {
+        return find.query()
+                .where()
+                .eq("recipe_id", recipeId)
+                .eq("ingredient_id", ingredientId)
+                .findOne();
+    }
+
     public static List<RecipeIngredient> findByRecipeId(Long recipeId) {
         return find.query().where().eq("recipe_id", recipeId).findList();
     }
