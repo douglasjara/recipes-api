@@ -1,25 +1,28 @@
 package controllers;
 
 import actions.Timed;
-import actions.TimerAction;
 import io.ebean.PagedList;
 import models.*;
+import play.cache.Cached;
+import play.cache.SyncCacheApi;
 import play.data.Form;
 import play.data.FormFactory;
-import play.data.validation.ValidationError;
 import play.i18n.Messages;
 import play.i18n.MessagesApi;
 import play.libs.Json;
 import play.mvc.*;
 import javax.inject.Inject;
 
+@Timed
 public class RecipeController extends Controller {
     @Inject
     FormFactory formFactory;
     @Inject
     MessagesApi messagesApi;
+    @Inject
+    SyncCacheApi cache;
 
-    @Timed
+    @Cached(key="getRecipes", duration = 5)
     public Result getRecipes(Http.Request request, int page, int maxRows) {
         PagedList<Recipe> recipes = Recipe.getAll(page, maxRows);
         PagedRecipes pagedRecipes = new PagedRecipes(page, recipes.getPageSize(), recipes.getTotalCount(), recipes.getList());
@@ -32,7 +35,7 @@ public class RecipeController extends Controller {
         return Results.status(415);
     }
 
-    @Timed
+    @Cached(key="getRecipe", duration = 5)
     public Result getRecipe(Http.Request request, Long id) {
         Messages messages = this.messagesApi.preferred(request);
         Recipe recipe = Recipe.findById(id);
@@ -55,7 +58,26 @@ public class RecipeController extends Controller {
         return Results.status(415);
     }
 
-    @Timed
+    public Result searchRecipes(Http.Request request, int page, int maxRows, String title, String ingredients, Float price, Integer kal) {
+       price = price.isNaN() ? 0 : price;
+       kal = kal==null ? 0 : kal;
+
+        PagedList<Recipe> recipes = null;
+        if (!ingredients.isEmpty())
+            recipes = Recipe.searchRecipes(page, maxRows, title, ingredients, price, kal);
+        else
+            recipes = Recipe.searchRecipes(page, maxRows, title, price, kal);
+
+        PagedRecipes pagedRecipes = new PagedRecipes(page, recipes.getPageSize(), recipes.getTotalCount(), recipes.getList());
+
+        if (request.accepts("application/json"))
+            return Results.ok(Json.toJson(pagedRecipes)).as("application/json");
+        if (request.accepts("application/xml"))
+            return Results.ok(views.xml.pagedRecipes.render(pagedRecipes));
+
+        return Results.status(415);
+    }
+
     @play.db.ebean.Transactional
     public Result createRecipe(Http.Request request) {
         Messages messages = this.messagesApi.preferred(request);
@@ -75,6 +97,7 @@ public class RecipeController extends Controller {
         }
 
         recipeReceived.createRecipe();
+        removeCache();
 
         if (request.accepts("application/json"))
             return Results.ok(play.libs.Json.toJson(recipeReceived));
@@ -84,7 +107,6 @@ public class RecipeController extends Controller {
         return Results.status(415);
     }
 
-    @Timed
     @play.db.ebean.Transactional
     public Result updateRecipe(Http.Request request, Long id) {
         Messages messages = this.messagesApi.preferred(request);
@@ -106,6 +128,7 @@ public class RecipeController extends Controller {
 
         recipeToUpdate.merge(recipeReceived);
         recipeToUpdate.updateRecipe();
+        removeCache();
 
         if (request.accepts("application/json"))
             return Results.ok(play.libs.Json.toJson(recipeToUpdate));
@@ -115,7 +138,6 @@ public class RecipeController extends Controller {
         return Results.status(415);
     }
 
-    @Timed
     @play.db.ebean.Transactional
     public Result deleteRecipe(Http.Request request, Long id) {
         Messages messages = this.messagesApi.preferred(request);
@@ -133,7 +155,14 @@ public class RecipeController extends Controller {
         }
 
         recipeToDelete.deleteRecipe(id);
+        removeCache();
 
         return Results.ok();
     }
+
+    private void removeCache() {
+        this.cache.remove("getRecipes");
+        this.cache.remove("getRecipe");
+    }
+
 }

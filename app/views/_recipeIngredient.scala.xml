@@ -1,0 +1,6 @@
+@(recipeIngredient: RecipeIngredient)
+<recipeIngredient>
+    @_ingredient(recipeIngredient.getIngredient())
+    <quantity>@recipeIngredient.getQuantity()</quantity>
+    <measureUnit>@recipeIngredient.getMeasureUnit()</measureUnit>
+</recipeIngredient>

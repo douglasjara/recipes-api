@@ -1,14 +1,19 @@
 package models;
 
-import io.ebean.Finder;
-import io.ebean.PagedList;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.ebean.*;
+import io.ebean.Query;
 import org.hibernate.validator.constraints.URL;
 import play.data.validation.Constraints.*;
 import validators.EstimatedTimeFormat;
 import java.util.*;
 import javax.persistence.*;
 
+// N-M relation solution based on:
+// https://stackoverflow.com/questions/27204672/custom-bridge-table-in-playframework-ebean
+
 @Entity
+@JsonIgnoreProperties({"_ebean_intercept", "_$dbName"})
 public class Recipe extends baseModel {
     @Required
     private String title;
@@ -19,11 +24,11 @@ public class Recipe extends baseModel {
     @MinLength(50)
     private String howToMake;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    public List<Ingredient> ingredients = new ArrayList<Ingredient>();
-
     @OneToOne(cascade = CascadeType.ALL)
     public AdditionalInformation additionalInformation;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<RecipeIngredient> recipeIngredients;
 
     @OneToMany(cascade = CascadeType.ALL)
     public List<Suggestion> suggestions;
@@ -75,18 +80,47 @@ public class Recipe extends baseModel {
                 .findPagedList();
     }
 
+    public static PagedList<Recipe> searchRecipes(int page, int maxRows, String title, String ingredients, Float price, Integer kal) {
+        page = page == 0 ? 1 : page;
+        maxRows = maxRows>10 || maxRows == 0 ? 10 : maxRows;
+
+        List<String> ingredientsToSearch= Arrays.asList(ingredients.toLowerCase().split("\\s*(=>|,|\\s)\\s*"));
+
+        return find.query()
+                .where()
+                .ilike("title", "%"+title+"%")
+                .and()
+                .in("recipeIngredients.ingredient.name", ingredientsToSearch)
+                .gt("additionalInformation.price", price)
+                .gt("additionalInformation.kal", kal)
+                .setFirstRow((page - 1) * maxRows)
+                .setMaxRows(maxRows)
+                .orderBy("title")
+                .findPagedList();
+    }
+
+    public static PagedList<Recipe> searchRecipes(int page, int maxRows, String title, Float price, Integer kal) {
+        page = page == 0 ? 1 : page;
+        maxRows = maxRows>10 || maxRows == 0 ? 10 : maxRows;
+
+        return find.query()
+                .where()
+                .ilike("title", "%"+title+"%")
+                .and()
+                .gt("additionalInformation.price", price)
+                .gt("additionalInformation.kal", kal)
+                .setFirstRow((page - 1) * maxRows)
+                .setMaxRows(maxRows)
+                .orderBy("title")
+                .findPagedList();
+    }
+
     public static Recipe findById(Long id) {
         return find.byId(id);
     }
 
     public static List<Recipe> findByTitle(String title) {
-        List<Recipe> recetas = find.query().where().like("title", title).findList();
-
-        for (Recipe receta : recetas) {
-            System.out.println(receta.getId() + ":" + receta.title);
-        }
-
-        return find.query().where().like("title", title).findList();
+        return find.query().where().ilike("title", title).findList();
     }
 
     public Boolean deleteRecipe(Long id) {

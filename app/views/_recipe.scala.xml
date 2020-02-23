@@ -5,7 +5,16 @@
     <estimatedTime>@recipe.getEstimatedTime()</estimatedTime>
     <imageUrl>@recipe.getImageUrl()</imageUrl>
     <howToMake>@recipe.getHowToMake()</howToMake>
-    @_additionalInformation(recipe.additionalInformation)
+    @if(recipe.additionalInformation!=null) {
+        @_additionalInformation(recipe.additionalInformation)
+    } else {
+    <additionalInformation></additionalInformation>
+    }
+    <recipeIngredients>
+        @for(recipeIngredient <- recipe.recipeIngredients) {
+            @_recipeIngredient(recipeIngredient)
+        }
+    </recipeIngredients>
     <suggestions>
         @for(suggestion <- recipe.suggestions) {
             @_suggestion(suggestion)

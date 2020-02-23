@@ -1,6 +1,7 @@
 package models;
 
 import io.ebean.Finder;
+import play.data.validation.Constraints;
 import validators.DifficultyOptions;
 
 import javax.persistence.Entity;
@@ -8,12 +9,15 @@ import javax.validation.constraints.Min;
 
 @Entity
 public class AdditionalInformation extends baseModel {
+    @Constraints.Required
     @DifficultyOptions
     private String difficulty;
     @Min(1)
     private Integer guests;
-    private String price;
-    private String kal;
+    @Constraints.Required
+    private Float price;
+    @Constraints.Required
+    private Integer kal;
 
     private static final Finder<Long, AdditionalInformation> find = new Finder<>(AdditionalInformation.class);
     private static final Finder<Long, Recipe> recipeFind = new Finder<>(Recipe.class);
@@ -22,10 +26,10 @@ public class AdditionalInformation extends baseModel {
     public void setDifficulty(String difficulty) { this.difficulty = difficulty; }
     public Integer getGuests() { return guests; }
     public void setGuests(Integer guests) { this.guests = guests; }
-    public String getPrice() { return price; }
-    public void setPrice(String price) { this.price = price; }
-    public String getKal() { return kal; }
-    public void setKal(String kal) { this.kal = kal; }
+    public Float getPrice() { return price; }
+    public void setPrice(Float price) { this.price = price; }
+    public Integer getKal() { return kal; }
+    public void setKal(Integer kal) { this.kal = kal; }
 
     public AdditionalInformation createAdditionalInformation() {
         this.save();

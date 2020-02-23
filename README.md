@@ -1,6 +1,20 @@
-# Play Hello World Web Tutorial for Java
+# Recipes REST API in Java, using play framework
 
-To follow the steps in this tutorial, you will need the correct version of Java and a build tool. You can build Play projects with any Java build tool. Since sbt takes advantage of Play features such as auto-reload, the tutorial describes how to build the project with sbt. 
+This project is an example of play framework use, wich contains the following features:
+
+- REST resources design (routes)
+- Operation resources design (verbs)
+- Models: attributes, finder, etc
+- 1 to 1 model relation
+- 1 to N model relation
+- N to M model relation (adapation, see References)
+- Model validations
+- Custom validations
+- Controllers
+- JSON and XML views
+- i18n (internationalization): English and Spanish
+- Cache (only for fun, 5 seconds in GET methods. POST and PUT remove cache.)
+- Action composition
 
 Prerequisites include:
 
@@ -22,14 +36,59 @@ If you do not have the required versions, follow these links to obtain them:
 
 ## Build and run the project
 
-This example Play project was created from a seed template. It includes all Play components and an Akka HTTP server. The project is also configured with filters for Cross-Site Request Forgery (CSRF) protection and security headers.
+This API Play project was created from a seed template. It includes all Play components and an Akka HTTP server. The project is also configured with filters for Cross-Site Request Forgery (CSRF) protection and security headers.
 
 To build and run the project:
 
-1. Use a command window to change into the example project directory, for example: `cd play-java-hello-world-web`
+1. Use a command window to change into the example project directory, for example: `cd recipe-api`
 
 2. Build the project. Enter: `sbt run`. The project builds and starts the embedded HTTP server. Since this downloads libraries and dependencies, the amount of time required depends partly on your connection's speed.
 
 3. After the message `Server started, ...` displays, enter the following URL in a browser: <http://localhost:9000>
 
-The Play application responds: `Welcome to the Hello World Tutorial!`
+## Plugins used
+
+- com.typesafe.play - sbt-plugin, Version 2.7.3
+- com.typesafe.sbt - sbt-play-ebean, Version 5.0.2
+
+## Methods
+
+### Recipes
+- GET     /recipes                      
+- GET     /recipes/search               
+- GET     /recipe/:recipeId
+- POST    /recipe
+- PUT     /recipe/:recipeId
+- DELETE  /recipe/:recipeId
+
+### Recipe Additional Information (1 to 1 relation)
+- GET     /recipe/:recipeId/additionalInformation  
+- GET     /recipe/additionalInformation/:additionalInformationId 
+- POST    /recipe/:recipeId/additionalInformation    
+- PUT     /recipe/additionalInformation/:additionalInformationId      
+
+### Recipe Suggestions (1 to N relation)
+- GET     /recipe/:recipeId/suggestions   
+- GET     /recipe/suggestion/:suggestionId
+- POST    /recipe/:recipeId/suggestion    
+- PUT     /recipe/suggestion/:suggestionId
+- DELETE  /recipe/suggestion/:suggestionId
+
+### Recipe Ingredients (N to M relation)
+- GET     /ingredients
+- GET     /ingredient/:ingredientId
+- POST    /ingredient              
+- PUT     /ingredient/:ingredientId
+- DELETE  /ingredient/:ingredientId
+
+- GET     /recipe/:recipeId/ingredients  
+- POST    /recipe/:recipeId/ingredient/:ingredientId
+- PUT     /recipe/:recipeId/ingredient/:ingredientId
+- DELETE  /recipe/:recipeId/ingredient/:ingredientId 
+
+
+## References
+
+- Play Framework java template: https://developer.lightbend.com/start/?group=play&project=play-samples-play-java-starter-example
+- N to M model relation adaptation: https://stackoverflow.com/questions/27204672/custom-bridge-table-in-playframework-ebean
+- Play Framework Documentation: https://www.playframework.com/documentation/2.8.x/Home

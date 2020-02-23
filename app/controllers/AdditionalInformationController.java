@@ -3,6 +3,8 @@ package controllers;
 import models.AdditionalInformation;
 import models.ErrorResponse;
 import models.Recipe;
+import play.cache.Cached;
+import play.cache.SyncCacheApi;
 import play.data.Form;
 import play.data.FormFactory;
 import play.i18n.Messages;
@@ -19,7 +21,10 @@ public class AdditionalInformationController extends Controller {
     FormFactory formFactory;
     @Inject
     MessagesApi messagesApi;
+    @Inject
+    SyncCacheApi cache;
 
+    @Cached(key="getAdditionalInformationByRecipeId", duration = 5)
     public Result getAdditionalInformationByRecipeId(Http.Request request, Long recipeId) {
         Messages messages = this.messagesApi.preferred(request);
         Recipe recipe = Recipe.findById(recipeId);
@@ -44,6 +49,7 @@ public class AdditionalInformationController extends Controller {
         return Results.status(415);
     }
 
+    @Cached(key="getAdditionalInformation", duration = 5)
     public Result getAdditionalInformation(Http.Request request, Long id) {
         Messages messages = this.messagesApi.preferred(request);
         AdditionalInformation additionalInformation = AdditionalInformation.findById(id);
@@ -97,6 +103,8 @@ public class AdditionalInformationController extends Controller {
         if(additionalInformationToDeleteId!=null)
             AdditionalInformation.deleteAdditionalInformation(additionalInformationToDeleteId);
 
+        removeCache();
+
         if (request.accepts("application/json"))
             return Results.ok(Json.toJson(additionalInformationReceived));
         if (request.accepts("application/xml"))
@@ -125,6 +133,7 @@ public class AdditionalInformationController extends Controller {
 
         additionalInformationToUpdate.merge(additionalInformationReceived);
         additionalInformationToUpdate.updateAdditionalInformation();
+        removeCache();
 
         if (request.accepts("application/json"))
             return Results.ok(Json.toJson(additionalInformationToUpdate));
@@ -132,5 +141,10 @@ public class AdditionalInformationController extends Controller {
             return Results.ok(views.xml.additionalInformation.render(additionalInformationToUpdate));
 
         return Results.status(415);
+    }
+
+    private void removeCache() {
+        this.cache.remove("getAdditionalInformationByRecipeId");
+        this.cache.remove("getAdditionalInformation");
     }
 }
