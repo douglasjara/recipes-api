@@ -29,7 +29,7 @@ create table recipe (
   title                         varchar(255),
   estimated_time                varchar(255),
   image_url                     varchar(255),
-  how_to_make                   varchar(255),
+  how_to_make                   TEXT,
   additional_information_id     bigint,
   version                       bigint not null,
   when_created                  timestamp not null,

@@ -2,21 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52ad355e-c224-4420-a89b-10ed72234b3a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules/recipes-api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/recipes-api.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/AdditionalInformationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/AdditionalInformationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/IngredientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/IngredientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/RecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/RecipeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/RecipeIngredientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/RecipeIngredientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/SuggestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/SuggestionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/AdditionalInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/AdditionalInformation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Ingredient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Recipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/RecipeIngredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/RecipeIngredient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/commonSidebar.scala.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/commonSidebar.scala.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/explore.scala.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/index.scala.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/index.scala.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/main.scala.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/main.scala.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.sbt" beforeDir="false" afterPath="$PROJECT_DIR$/build.sbt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/application.conf" beforeDir="false" afterPath="$PROJECT_DIR$/conf/application.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/evolutions/default/1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/conf/evolutions/default/1.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/messages.en" beforeDir="false" afterPath="$PROJECT_DIR$/conf/messages.en" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/messages.es" beforeDir="false" afterPath="$PROJECT_DIR$/conf/messages.es" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/routes" beforeDir="false" afterPath="$PROJECT_DIR$/conf/routes" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -110,6 +105,7 @@
     </option>
     <option name="modificationStamps">
       <map>
+        <entry key="$PROJECT_DIR$" value="4738501461052" />
         <entry key="$PROJECT_DIR$/build.sbt" value="847402224" />
         <entry key="$PROJECT_DIR$/project/build.properties" value="2868604264" />
         <entry key="$PROJECT_DIR$/project/plugins.sbt" value="4174363683" />
@@ -117,6 +113,7 @@
     </option>
     <option name="projectSyncType">
       <map>
+        <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
         <entry key="$PROJECT_DIR$/../../ejercicios en clase/recipes" value="PREVIEW" />
         <entry key="$USER_HOME$/Downloads/play-hello" value="PREVIEW" />
       </map>

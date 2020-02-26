@@ -2,10 +2,10 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# An example controller showing a sample home page
-GET     /                           controllers.HomeController.index
-GET    /explore                     controllers.HomeController.explore
-GET    /tutorial                    controllers.HomeController.tutorial
+#Home page
+GET     /           controllers.HomeController.index
+GET    /methods     controllers.HomeController.methods
+GET    /postman     controllers.HomeController.postman
 
 #Recipe
 GET     /recipes                      controllers.RecipeController.getRecipes(request: Request, page: Int, maxRows: Int)
@@ -20,7 +20,7 @@ GET     /recipe/:recipeId/additionalInformation                     controllers.
 GET     /recipe/additionalInformation/:additionalInformationId      controllers.AdditionalInformationController.getAdditionalInformation(request: Request, additionalInformationId: Long)
 POST    /recipe/:recipeId/additionalInformation                     controllers.AdditionalInformationController.createAdditionalInformation(request: Request, recipeId: Long)
 PUT     /recipe/additionalInformation/:additionalInformationId      controllers.AdditionalInformationController.updateAdditionalInformation(request: Request, additionalInformationId: Long)
-#DELETE Para eliminar, se debe eliminar la receta.
+#DELETE Entire recipe must be deleted to delete additionalInformation.
 
 #Recipe Suggestions (1 to N relation)
 GET     /recipe/:recipeId/suggestions           controllers.SuggestionController.getSuggestionsByRecipeId(request: Request, recipeId: Long)
