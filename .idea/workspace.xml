@@ -3,16 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="52ad355e-c224-4420-a89b-10ed72234b3a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Recipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/commonSidebar.scala.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/commonSidebar.scala.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/explore.scala.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/index.scala.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/index.scala.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/main.scala.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/main.scala.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.sbt" beforeDir="false" afterPath="$PROJECT_DIR$/build.sbt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/application.conf" beforeDir="false" afterPath="$PROJECT_DIR$/conf/application.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/evolutions/default/1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/conf/evolutions/default/1.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/routes" beforeDir="false" afterPath="$PROJECT_DIR$/conf/routes" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
