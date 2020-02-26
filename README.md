@@ -53,38 +53,7 @@ To build and run the project:
 
 ## Methods
 
-### Recipes
-- GET     /recipes                      
-- GET     /recipes/search               
-- GET     /recipe/:recipeId
-- POST    /recipe
-- PUT     /recipe/:recipeId
-- DELETE  /recipe/:recipeId
-
-### Recipe Additional Information (1 to 1 relation)
-- GET     /recipe/:recipeId/additionalInformation  
-- GET     /recipe/additionalInformation/:additionalInformationId 
-- POST    /recipe/:recipeId/additionalInformation    
-- PUT     /recipe/additionalInformation/:additionalInformationId      
-
-### Recipe Suggestions (1 to N relation)
-- GET     /recipe/:recipeId/suggestions   
-- GET     /recipe/suggestion/:suggestionId
-- POST    /recipe/:recipeId/suggestion    
-- PUT     /recipe/suggestion/:suggestionId
-- DELETE  /recipe/suggestion/:suggestionId
-
-### Recipe Ingredients (N to M relation)
-- GET     /ingredients
-- GET     /ingredient/:ingredientId
-- POST    /ingredient              
-- PUT     /ingredient/:ingredientId
-- DELETE  /ingredient/:ingredientId
-
-- GET     /recipe/:recipeId/ingredients  
-- POST    /recipe/:recipeId/ingredient/:ingredientId
-- PUT     /recipe/:recipeId/ingredient/:ingredientId
-- DELETE  /recipe/:recipeId/ingredient/:ingredientId 
+See a [full documented postman collection here](https://documenter.getpostman.com/view/4401930/SzKWuxaK).
 
 
 ## References
