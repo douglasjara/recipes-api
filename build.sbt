@@ -1,5 +1,6 @@
 name := """recipes-api"""
 organization := "com.douglasjara"
+maintainer := "douglasjara@gmail.com"
 
 version := "1.0-SNAPSHOT"
 

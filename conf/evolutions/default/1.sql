@@ -4,7 +4,7 @@
 # --- !Ups
 
 create table additional_information (
-  id                            bigint auto_increment not null,
+  id                            bigserial not null,
   difficulty                    varchar(255),
   guests                        integer,
   price                         float,
@@ -16,7 +16,7 @@ create table additional_information (
 );
 
 create table ingredient (
-  id                            bigint auto_increment not null,
+  id                            bigserial not null,
   name                          varchar(255),
   version                       bigint not null,
   when_created                  timestamp not null,
@@ -25,7 +25,7 @@ create table ingredient (
 );
 
 create table recipe (
-  id                            bigint auto_increment not null,
+  id                            bigserial not null,
   title                         varchar(255),
   estimated_time                varchar(255),
   image_url                     varchar(255),
@@ -50,7 +50,7 @@ create table recipe_ingredient (
 );
 
 create table suggestion (
-  id                            bigint auto_increment not null,
+  id                            bigserial not null,
   recipe_id                     bigint not null,
   title                         varchar(255),
   description                   varchar(255),
