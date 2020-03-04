@@ -1,69 +1,55 @@
 @()
 
 
-@main("Welcome") {
+@main("Recipes REST API!") {
 @defining(play.core.PlayVersion.current) { version =>
 
 <section id="content">
   <div class="wrapper doc">
     <article>
-      <h2>Welcome to the Hello World Tutorial!</h2>
-      <p>This tutorial introduces Play Framework, describes how Play web applications work, and walks you through steps
-        to create page that displays a Hello World greeting.</p>
-      <p>If you loaded this page from the web server running on <code>localhost:9000</code>, congratulations! You have
-        successfully built and run a Play application. If not, you likely opened the source <code>index.scala.html</code>
-        file. Please follow the directions in the <code>README.md</code> file in the top-level project directory to run
-        the tutorial.</p>
+      <h2>Welcome to Recipes REST API!</h2>
+      <p>This project is an example of play framework use, which manage recipes with their ingredients and suggestions.
+        Additional information of each recipe like price, calories, difficulty level, and number of guests are included too.
+      </p>
+      <p>Please follow the directions in the <code>README.md</code> file in the top-level project directory to run
+        the project.</p>
 
-      <h3 id="introduction">Introduction to Play</h3>
-      <p>As illustrated below, Play is a full-stack framework with all of the components you need to build a Web
-        Application or a REST service, including:</p>
+      <h3 id="introduction">Features</h3>
+      <p>This project is an example of play framework use, wich contains the following features:</p>
       <ul>
-        <li>An integrated HTTP server</li>
-        <li>Form handling</li>
-        <li>Cross-Site Request Forgery (CSRF) protection</li>
-        <li>A powerful routing mechanism</li>
-        <li>I18n support, and more.</li>
+        <li>REST resources design (routes)</li>
+        <li>Operation resources design (verbs)</li>
+        <li>Models: attributes, finder, etc</li>
+        <li>1 to 1 model relation</li>
+        <li>1 to N model relation</li>
+        <li>N to M model relation (adapation, see <i>References</i> in <code>README.md</code>)</li>
+        <li>Model validations</li>
+        <li>Custom validations</li>
+        <li>Controllers</li>
+        <li>JSON and XML views</li>
+        <li>i18n (internationalization): English and Spanish</li>
+        <li>Cache (only for fun, 5 seconds in GET methods. POST and PUT remove cache.)</li>
+        <li>Action composition</li>
       </ul>
 
-      <img src="assets/images/play-stack.png" alt="Play Stack" class="small-5 medium-4 large-3" />
-
-      <p>Play integrates with many object relational mapping (ORM) layers. It has out-of-the-box support for <a href="https://www.playframework.com/documentation/@version/Anorm"
-          target="_blank">Anorm</a>, <a href="https://www.playframework.com/documentation/@version/JavaEbean" target="_blank">JavaEbean</a>,
-        <a href="https://www.playframework.com/documentation/@version/PlaySlick" target="_blank">PlaySlick</a>, and
-        <a href="https://www.playframework.com/documentation/@version/JavaJPA" target="_blank">JPA</a>. See <a href="https://www.playframework.com/documentation/@version/JavaDatabase"
-          target="_blank">Accessing an SQL Database</a> for more information. Many customers use NoSQL, other ORMs or
-        even access data from a REST service.</p>
-
-
-      <p>Play APIs are available in both Java and Scala. The Framework uses <a href="https://akka.io" target="_blank">Akka</a>
-        and <a href="https://doc.akka.io/docs/akka-http/current/index.html" target="_blank">Akka HTTP</a> under the
-        hood. This endows Play applications with a stateless, non-blocking, event-driven architecture that provides
-        horizontal and vertical scalability and uses resources more efficiently. Play projects contain Scala
-        components, but because Play has a Java API, Java developers do not need to learn Scala to use Play
-        successfully.</p>
-
-      <p>Here are just a few of the reasons developers love using Play Framework:</p>
+      <h3 id="db_config">DB config</h3>
+      <p>Default DB for use is postgreSQL, but you can re define environmental variables to set your favorite database:</p>
       <ul>
-        <li>Its Model-View-Controller (MVC) architecture is familiar and easy to learn.</li>
-        <li>Direct support of common web development tasks and hot reloading saves precious development time.</li>
-        <li>A large active community promotes knowledge sharing.</li>
-        <li>Use of <a href="https://github.com/playframework/twirl">Twirl templates</a> to render pages. The Twirl
-          template language is:
-          <ol>
-            <li>Easy to learn</li>
-            <li>Requires no special editor</li>
-            <li>Provides type safety</li>
-            <li>Is compiled so that errors display in the browser</li>
-          </ol>
-        </li>
+        <li>DB_DRIVER</li>
+        <li>DB_URL</li>
+        <li>DB_USERNAME</li>
+        <li>DB_PASSWORD</li>
       </ul>
-
-      <p>To learn more about Play's benefits, visit the <a href="https://www.playframework.com" target="_blank">Play
-          website</a>.</p>
+      <p>This project supports the following DBMS:</p>
+      <ul>
+        <li>h2 database</li>
+        <li>PostgreSQL</li>
+        <li>MySQL</li>
+      </ul>
+      <!--img src="assets/images/play-stack.png" alt="Play Stack" class="small-5 medium-4 large-3" /-->
 
       <h3 id="next-steps">Next steps</h3>
-      <p>Now, let's <a href="@routes.HomeController.explore">explore the tutorial Play application</a>.</p>
+      <p>Now, let's <a href="@routes.HomeController.methods">explore the methods that this API offers to you.</a>.</p>
     </article>
     <aside>
       @commonSidebar()

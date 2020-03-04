@@ -1,5 +1,6 @@
 name := """recipes-api"""
 organization := "com.douglasjara"
+maintainer := "douglasjara@gmail.com"
 
 version := "1.0-SNAPSHOT"
 
@@ -10,7 +11,8 @@ scalaVersion := "2.13.0"
 libraryDependencies += guice
 
 enablePlugins(PlayEbean)
-libraryDependencies += evolutions
-libraryDependencies += jdbc
-libraryDependencies += "com.h2database" % "h2" % "1.4.194"
-libraryDependencies ++= Seq(ehcache)
+libraryDependencies ++= Seq(evolutions, jdbc, ehcache,
+                           "com.h2database" % "h2" % "1.4.194",
+                           "org.postgresql" % "postgresql" % "42.2.10",
+                           "mysql" % "mysql-connector-java" % "5.1.41",
+                           )

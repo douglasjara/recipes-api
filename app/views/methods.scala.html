@@ -1,0 +1,27 @@
+@()
+
+@main("Recipes API methods") {
+@defining(play.core.PlayVersion.current) { version =>
+
+<section id="content">
+  <div class="wrapper doc">
+    <article>
+      <h2>Available methods</h2>
+        <p>All methods are available in a postman collection, so you can:</p>
+        <ul>
+            <li><a href="@routes.HomeController.postman" target="_blank">Download collection here</a> and try it yourself, or</li>
+            <li><a href="https://documenter.getpostman.com/view/4401930/SzKWuxaK" target="_blank">View a complete methods documentation here</a></li>
+        </ul>
+        <h2>Contribute</h2>
+        <p>You can contribute with more methods! Just request access
+            <a href="https://github.com/douglasjara/recipes-api" target="_blank">
+                to the project in github</a>
+        </p>
+    </article>
+    <aside>
+      @commonSidebar()
+    </aside>
+  </div>
+</section>
+}
+}

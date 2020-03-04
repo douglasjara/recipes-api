@@ -22,6 +22,7 @@ public class Recipe extends baseModel {
     @URL
     private String imageUrl;
     @MinLength(50)
+    @Column(columnDefinition = "TEXT") //funciona con PostgreSQL y MySQL
     private String howToMake;
 
     @OneToOne(cascade = CascadeType.ALL)

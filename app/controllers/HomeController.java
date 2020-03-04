@@ -1,29 +1,29 @@
 package controllers;
 
+import play.libs.Json;
 import play.mvc.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
-/**
- * This controller contains an action to handle HTTP requests
- * to the application's home page.
- */
 public class HomeController extends Controller {
-
-    /**
-     * An action that renders an HTML page with a welcome message.
-     * The configuration in the <code>routes</code> file means that
-     * this method will be called when the application receives a
-     * <code>GET</code> request with a path of <code>/</code>.
-     */
     public Result index() {
         return ok(views.html.index.render());
     }
     
-    public Result explore() {
-        return ok(views.html.explore.render());
-    }
-    
-    public Result tutorial() {
-        return ok(views.html.tutorial.render());
+    public Result postman() {
+        try (FileInputStream fis = new FileInputStream("public/docs/recipes.postman_collection.json");) {
+            return ok(Json.parse(fis)).as("application/json");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return Results.badRequest("File not found");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return Results.badRequest("File can't be read");
     }
 
+    public Result methods() {
+        return ok(views.html.methods.render());
+    }
 }

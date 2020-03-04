@@ -4,20 +4,9 @@
     <list default="true" id="52ad355e-c224-4420-a89b-10ed72234b3a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/modules/recipes-api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/recipes-api.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/AdditionalInformationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/AdditionalInformationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/IngredientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/IngredientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/RecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/RecipeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/RecipeIngredientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/RecipeIngredientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/SuggestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/SuggestionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/AdditionalInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/AdditionalInformation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Ingredient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Recipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/RecipeIngredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/RecipeIngredient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.sbt" beforeDir="false" afterPath="$PROJECT_DIR$/build.sbt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/application.conf" beforeDir="false" afterPath="$PROJECT_DIR$/conf/application.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/evolutions/default/1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/conf/evolutions/default/1.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/messages.en" beforeDir="false" afterPath="$PROJECT_DIR$/conf/messages.en" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/messages.es" beforeDir="false" afterPath="$PROJECT_DIR$/conf/messages.es" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/routes" beforeDir="false" afterPath="$PROJECT_DIR$/conf/routes" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +99,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$/build.sbt" value="847402224" />
+        <entry key="$PROJECT_DIR$/build.sbt" value="600803928" />
         <entry key="$PROJECT_DIR$/project/build.properties" value="2868604264" />
         <entry key="$PROJECT_DIR$/project/plugins.sbt" value="4174363683" />
       </map>
